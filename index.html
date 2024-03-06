@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RIZ Games</title>
+<style>
+body, html {
+     margin: 0;
+     padding: 0;
+     height: 100%;
+     font-family: 'Arial', sans-serif;
+     overflow: hidden;
+    /* Prevent scrolling */
+}
+ .header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 20px;
+     background-color: #000000;
+}
+ .logo {
+     width: 120px;
+}
+ .menu {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     display: flex;
+}
+ .menu li {
+     padding: 0 20px;
+}
+ .menu a {
+     text-decoration: none;
+     color: #FEFEFE;
+     text-shadow: -1px 1px #00ff96;
+     font-size:22px;
+     display:inline-block;
+}
+ .menu a:hover {
+     transform: scale(1.05);
+     display:inline-block;
+}
+ .main {
+     height: calc(100vh - 60px);
+    /* Adjust based on your header's actual height */
+     justify-content: center;
+     align-items: center;
+}
+ .games{
+     width:100%;
+}
+
+ .nitro-racers{
+     height: 100%;
+     overflow: hidden;
+     transition: opacity .5s ease;
+     width: 100%;
+     z-index: 0;
+     background-image: url('nitroracersnologo.png');
+     background-size: cover;
+    /* Change to 'contain' if you want to ensure the image is fully visible */
+     background-position: center;
+    /* Centers the background image */
+}
+ .play-now-button {
+     background-image: url("googleplaybutton.png");
+     background-size: contain;
+     font-weight: 700;
+     cursor: pointer;
+     transition: color .1s ease, box-shadow .1s ease, background-color .1s ease, -webkit-box-shadow .1s ease;
+     letter-spacing: -.01em;
+     line-height: normal;
+     border: 0 solid transparent;
+     background-size: contain;
+     border-radius:4px;
+     height: 45px !important;
+     width: 160px !important;
+     align-items: center;
+     cursor: pointer;
+     display: inline-flex;
+     flex-direction: row;
+     font-family: Source Sans Pro, sans-serif;
+     font-size: 1rem;
+     font-weight: 600;
+     gap: 0.5rem;
+     justify-content: center;
+     letter-spacing: 1px;
+     line-height: 1;
+     position: relative;
+     text-decoration: none;
+     text-transform: uppercase;
+     transition: background-color .2s, border-color .2s, color .2s;
+     <!-- width:300px;
+     --> 
+}
+ .play-now-button:hover {
+     transform: scale(1.05);
+}
+ .link-button{
+     width:6em;
+     height:2.4em;
+     position: relative;
+     display: block;
+     text-align: center;
+     -webkit-box-shadow: none;
+     box-shadow: none;
+     padding: 0.7em 2em;
+     box-sizing: border-box;
+}
+ .game {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* creates a 12-column grid */
+  grid-gap: 20px; /* adjust the space between grid items */
+  align-items: center;
+  height: 400px!important; /* fixed height */
+  width: 100%;
+}
+
+.game-logo,
+.game-text {
+  padding: 20px; /* adds padding inside the elements */
+}
+
+.game-logo {
+  grid-column: 2 / span 5;
+  place-self: start center;
+    align-self: center; /* centers logo vertically in its grid area */
+
+    text-align: center; /* centers logo horizontally */
+
+}
+.game-logo img {
+  max-width: 100%; /* Adjust the width as needed */
+  max-height: 100%; /* Adjust the height as needed */
+  height: auto; /* Maintain the aspect ratio */
+  width: auto; /* Maintain the aspect ratio */
+}
+.game-text {
+  grid-column: 8 / -1; /* Adjust the start and end as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This centers the contents vertically in the flex container */
+  text-align: center; /* Centers text horizontally */
+  color:white;
+  font-size: clamp(20px, 4vh, 30px); /* Adjust min and max values as needed */ 
+}
+
+.game-text, .Store-Buttons-Group {
+  grid-column: 8 / -2; /* Description starts at column 6 and goes to the end */
+  place-self: start center;
+    align-self: center; /* centers text vertically in its grid area */
+
+}
+
+.Store-Buttons-Group {
+  padding: 20px; /* Adds padding inside the element */
+  display: flex;
+  justify-content: center; /* Centers the button horizontally */
+  align-items: center; /* Centers the button vertically */
+}
+.ml-30{
+margin-left:30px;
+display:block;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="RIZletters.png" alt="Company Logo" class="logo"> <!-- Replace your-logo.png with your actual logo file -->
+  <!-- <ul class="menu"> -->
+    <!-- <li><a href="/">Home</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+  <!-- </ul> -->
+</div>
+
+<div class="main">
+<div class="games">
+<span class="ml-30"><h2> Our Games </h2></span>
+<div class="game nitro-racers">
+  <div class="game-logo">
+    <img src="LogoNitroRacers.png"  alt="Nitro Racers Logo"/>
+  </div>
+  <div class="game-text">
+    RIZ Nitro Racers is a fast paced and competitive racing game. You drive across different tracks, unlock cars and racers, and use them to race against your friends.
+    <div class="Store-Buttons-Group">
+      <a href="https://play.google.com/store/apps/details?id=com.palermo.carslam" class="play-now-button">
+        <span class="link-button"> </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+</div>
+</div>	
+</body>
+</html>
