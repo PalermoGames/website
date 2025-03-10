@@ -1,236 +1,784 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RIZ Games</title>
-<!--  testing pushes -->
-<style>
-body, html {
-     margin: 0;
-     padding: 0;
-     height: 100%;
-     font-family: 'Arial', sans-serif;
-     overflow: hidden;
-    /* Prevent scrolling */
-}
- .header {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     padding: 20px;
-     background-color: #000000;
-	 height:60px;
-}
- .logo {
-     width: 120px;
-}
- .menu {
-     list-style-type: none;
-     margin: 0;
-     padding: 0;
-     display: flex;
-}
- .menu li {
-     padding: 0 20px;
-}
- .menu a {
-     text-decoration: none;
-     color: #FEFEFE;
-     text-shadow: -1px 1px #00ff96;
-     font-size:22px;
-     display:inline-block;
-}
- .menu a:hover {
-     transform: scale(1.05);
-     display:inline-block;
-}
- .main {
-     height: calc(100vh - 60px);
-    /* Adjust based on your header's actual height */
-     justify-content: center;
-     align-items: center;
-}
- .games{
-     width:100%;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIZ Games | Indie Game Development</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ff4d4d;
+      --secondary: #2d3142;
+      --accent: #4f9cf9;
+      --light: #f5f5f5;
+      --dark: #1a1a1a;
+    }
 
- .nitro-racers{
-     height: 100%;
-     overflow: hidden;
-     transition: opacity .5s ease;
-     width: 100%;
-     z-index: 0;
-     background-image: url('nitroracersnologo.png');
-     background-size: cover;
-    /* Change to 'contain' if you want to ensure the image is fully visible */
-     background-position: center;
-    /* Centers the background image */
-}
- .play-now-button {
-     background-image: url("googleplaybutton.png");
-     background-size: contain;
-     font-weight: 700;
-     cursor: pointer;
-     transition: color .1s ease, box-shadow .1s ease, background-color .1s ease, -webkit-box-shadow .1s ease;
-     letter-spacing: -.01em;
-     line-height: normal;
-     border: 0 solid transparent;
-     background-size: contain;
-     border-radius:4px;
-     height: 45px !important;
-     width: 160px !important;
-     align-items: center;
-     cursor: pointer;
-     display: inline-flex;
-     flex-direction: row;
-     font-family: Source Sans Pro, sans-serif;
-     font-size: 1rem;
-     font-weight: 600;
-     gap: 0.5rem;
-     justify-content: center;
-     letter-spacing: 1px;
-     line-height: 1;
-     position: relative;
-     text-decoration: none;
-     text-transform: uppercase;
-     transition: background-color .2s, border-color .2s, color .2s;
-     <!-- width:300px;
-     --> 
-}
- .play-now-button:hover {
-     transform: scale(1.05);
-}
- .link-button{
-     width:6em;
-     height:2.4em;
-     position: relative;
-     display: block;
-     text-align: center;
-     -webkit-box-shadow: none;
-     box-shadow: none;
-     padding: 0.7em 2em;
-     box-sizing: border-box;
-}
- .game {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr); /* creates a 12-column grid */
-  grid-gap: 20px; /* adjust the space between grid items */
-  align-items: center;
-  height: 400px!important; /* fixed height */
-  width: 100%;
-}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
 
-.game-logo,
-.game-text {
-  padding: 20px; /* adds padding inside the elements */
-}
+    .navbar {
+      background-color: rgba(26, 26, 26, 0.9) !important;
+      padding: 1rem 2rem;
+    }
 
-.game-logo {
-  grid-column: 2 / span 5;
-  place-self: start center;
-    align-self: center; /* centers logo vertically in its grid area */
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary) !important;
+    }
 
-    text-align: center; /* centers logo horizontally */
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: color 0.3s;
+    }
 
-}
-.game-logo img {
-  max-width: 100%; /* Adjust the width as needed */
-  max-height: 100%; /* Adjust the height as needed */
-  height: auto; /* Maintain the aspect ratio */
-  width: auto; /* Maintain the aspect ratio */
-}
-.game-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* This centers the contents vertically in the flex container */
-  text-align: center; /* Centers text horizontally */
-  color:white;
-  font-size: clamp(20px, 4vh, 30px); /* Adjust min and max values as needed */ 
-}
+    .nav-link:hover {
+      color: var(--primary) !important;
+    }
 
-.game-text, .Store-Buttons-Group {
-  grid-column: 8 / -2; /* Description starts at column 6 and goes to the end */
-  place-self: start center;
-    align-self: center; /* centers text vertically in its grid area */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      color: white;
+    }
 
-}
+    .btn-primary {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+    }
 
-.Store-Buttons-Group {
-  padding: 20px; /* Adds padding inside the element */
-  display: flex;
-  justify-content: center; /* Centers the button horizontally */
-  align-items: center; /* Centers the button vertically */
-}
-.ml-30{
-margin-left:30px;
-display:block;}
+    .btn-primary:hover {
+      background-color: #ff3333;
+      border-color: #ff3333;
+    }
 
-@media (max-width: 540px) {
-  .game {
-    grid-template-columns: 1fr; /* One column taking full width */
-    height: auto; /* Adjust height to content */
-  }
+    .btn-outline-light {
+      border-radius: 50px;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+    }
 
-  .game-logo,
-  .game-text,
-  .Store-Buttons-Group {
-    grid-column: 1 / -1; /* Span full width of the grid */
-  }
+    .section-title {
+      position: relative;
+      margin-bottom: 3rem;
+      font-weight: 700;
+    }
 
-  .game-logo {
-    place-self: center; /* Center the logo horizontally */
-  }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -15px;
+      width: 80px;
+      height: 4px;
+      background-color: var(--primary);
+    }
 
-  .game-text {
-    text-align: center; /* Center the text horizontally */
-    padding: 10px; /* Adjust padding as necessary */
-	font-size: clamp(8px, 2.5vh, 30px); /* Adjust min and max values as needed */ 
-  }
+    .section-title.text-center::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-  .Store-Buttons-Group {
-    display: flex;
-    justify-content: center; /* Center the button horizontally */
-    padding: 10px; /* Adjust padding as necessary */
-  }
+    .game-feature {
+      background-color: var(--light);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: transform 0.3s;
+      height: 100%;
+    }
 
-  /* You may want to adjust the button size as well */
-  .play-now-button {
-    width: 80%; /* Example width, adjust as necessary */
-    margin: 0 auto; /* Center the button in the available space */
-  }
-}
-</style>
+    .game-feature:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .services {
+      background-color: var(--secondary);
+      color: white;
+    }
+
+    .service-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 2rem;
+      height: 100%;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .team-member {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .team-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 5px solid var(--light);
+    }
+
+    .testimonial {
+      background-color: var(--light);
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: '\201C';
+      font-size: 5rem;
+      position: absolute;
+      top: -20px;
+      left: 10px;
+      color: rgba(0, 0, 0, 0.1);
+    }
+
+    .client-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .client-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 1rem;
+      object-fit: cover;
+    }
+
+    .contact {
+      background-color: var(--secondary);
+      color: white;
+    }
+
+    .contact-info {
+      margin-bottom: 2rem;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-right: 1rem;
+    }
+
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+    }
+
+    .social-icon {
+      font-size: 1.5rem;
+      color: white;
+      margin: 0 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-icon:hover {
+      color: var(--primary);
+    }
+
+    .game-screenshot {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .nearshore-badge {
+      background-color: var(--accent);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .game-logo {
+      max-width: 200px;
+      margin-bottom: 2rem;
+    }
+
+    .counter-box {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .counter {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .counter-text {
+      font-weight: 600;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: var(--light);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -13px;
+      background-color: var(--primary);
+      border: 4px solid var(--primary);
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      left: 50%;
+    }
+
+    .right::after {
+      left: -12px;
+    }
+
+    .timeline-content {
+      padding: 20px 30px;
+      background-color: white;
+      position: relative;
+      border-radius: 6px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    @media screen and (max-width: 768px) {
+      .timeline::after {
+        left: 31px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-item::after {
+        left: 18px;
+      }
+
+      .left::after, .right::after {
+        left: 18px;
+      }
+
+      .right {
+        left: 0%;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<div class="header">
-  <img src="RIZletters.png" alt="Company Logo" class="logo"> <!-- Replace your-logo.png with your actual logo file -->
-  <!-- <ul class="menu"> -->
-    <!-- <li><a href="/">Home</a></li> -->
-    <!-- <li><a href="/about">About</a></li> -->
-  <!-- </ul> -->
-</div>
-
-<div class="main">
-<div class="games">
-<span class="ml-30"><h2> Our Games </h2></span>
-<div class="game nitro-racers">
-  <div class="game-logo">
-    <img src="LogoNitroRacers.png"  alt="Nitro Racers Logo"/>
-  </div>
-  <div class="game-text">
-    RIZ Nitro Racers is a fast paced and competitive racing game. You drive across different tracks, unlock cars and racers, and use them to race against your friends.
-    <div class="Store-Buttons-Group">
-      <a href="https://play.google.com/store/apps/details?id=com.palermo.carslam" class="play-now-button">
-        <span class="link-button"> </span>
-      </a>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">RIZ Games</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#game">Our Game</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#team">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#clients">Clients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
     </div>
   </div>
-</div>
+</nav>
 
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-3 fw-bold mb-4">Crafting Exceptional Gaming Experiences</h1>
+        <p class="lead mb-4">We're an indie game studio based in Argentina, creating thrilling racing games and providing expert development services for clients worldwide.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#game" class="btn btn-primary">Our Racing Game</a>
+          <a href="#services" class="btn btn-outline-light">Work with Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
-</div>	
+<!-- Featured Game Section -->
+<section id="game" class="py-5">
+  <div class="container py-5">
+    <div class="row mb-5">
+      <div class="col-lg-6 offset-lg-3 text-center">
+        <h2 class="section-title text-center">TURBO RACER</h2>
+        <p class="lead">Our flagship racing game that pushes the boundaries of speed and excitement</p>
+      </div>
+    </div>
+
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="game-screenshot">
+          <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Turbo Racer Screenshot" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h3 class="mb-4">Experience the Thrill of Speed</h3>
+        <p class="mb-4">Turbo Racer is our adrenaline-pumping racing game that combines realistic physics with arcade-style fun. Race through meticulously designed tracks across various environments, from bustling city streets to treacherous mountain passes.</p>
+        <div class="row g-4 mb-4">
+          <div class="col-md-6">
+            <div class="d-flex align-items-start">
+              <i class="fas fa-gamepad me-3 feature-icon"></i>
+              <div>
+                <h5>Immersive Gameplay</h5>
+                <p>Feel every turn and drift with our realistic physics engine</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex align-items-start">
+              <i class="fas fa-car me-3 feature-icon"></i>
+              <div>
+                <h5>Customizable Vehicles</h5>
+                <p>Tune and personalize your dream racing machine</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex align-items-start">
+              <i class="fas fa-trophy me-3 feature-icon"></i>
+              <div>
+                <h5>Competitive Multiplayer</h5>
+                <p>Challenge friends and racers worldwide</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex align-items-start">
+              <i class="fas fa-map me-3 feature-icon"></i>
+              <div>
+                <h5>Diverse Tracks</h5>
+                <p>Race through 20+ unique and challenging environments</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-4 mb-4">
+        <div class="game-screenshot">
+          <img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Game Screenshot 1" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="game-screenshot">
+          <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1283&q=80" alt="Game Screenshot 2" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="game-screenshot">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Game Screenshot 3" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services py-5">
+  <div class="container py-5">
+    <div class="row mb-5">
+      <div class="col-lg-6 offset-lg-3 text-center">
+        <h2 class="section-title text-center">Work For Hire Services</h2>
+        <p class="lead">Leverage our expertise to bring your gaming vision to life</p>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-lg-6 mb-4">
+        <div class="nearshore-badge">
+          <i class="fas fa-globe-americas me-2"></i> Nearshore Advantage
+        </div>
+        <h3 class="mb-4">Why Choose Our Nearshore Services?</h3>
+        <p class="mb-4">Based in Argentina, we offer the perfect balance of quality, cost-effectiveness, and convenience for North American clients:</p>
+        <ul class="mb-4">
+          <li class="mb-2">Similar time zones with the US (only 1-3 hours difference)</li>
+          <li class="mb-2">Real-time collaboration during your business hours</li>
+          <li class="mb-2">Fluent English communication</li>
+          <li class="mb-2">Cultural alignment with Western markets</li>
+          <li class="mb-2">Cost-effective compared to US-based development</li>
+        </ul>
+        <p>Our nearshore model eliminates the communication delays and cultural barriers often associated with offshore development while maintaining competitive rates.</p>
+      </div>
+      <div class="col-lg-6">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="service-card">
+              <i class="fas fa-code mb-4 feature-icon"></i>
+              <h4 class="mb-3">Game Development</h4>
+              <p>Full-cycle development from concept to launch, using cutting-edge technologies and game engines.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="service-card">
+              <i class="fas fa-paint-brush mb-4 feature-icon"></i>
+              <h4 class="mb-3">Art & Design</h4>
+              <p>Stunning 2D/3D art, character design, environments, and UI/UX that bring your game to life.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="service-card">
+              <i class="fas fa-cogs mb-4 feature-icon"></i>
+              <h4 class="mb-3">Technical Solutions</h4>
+              <p>Custom gameplay mechanics, physics systems, AI, and performance optimization.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="service-card">
+              <i class="fas fa-mobile-alt mb-4 feature-icon"></i>
+              <h4 class="mb-3">Mobile Gaming</h4>
+              <p>Specialized in creating engaging mobile gaming experiences with cross-platform compatibility.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5 justify-content-center">
+      <div class="col-md-3 mb-4">
+        <div class="counter-box">
+          <div class="counter">50+</div>
+          <div class="counter-text">Projects Completed</div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="counter-box">
+          <div class="counter">15+</div>
+          <div class="counter-text">Years Experience</div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="counter-box">
+          <div class="counter">30+</div>
+          <div class="counter-text">Happy Clients</div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="counter-box">
+          <div class="counter">10M+</div>
+          <div class="counter-text">Players Reached</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section id="team" class="py-5">
+  <div class="container py-5">
+    <div class="row mb-5">
+      <div class="col-lg-6 offset-lg-3 text-center">
+        <h2 class="section-title text-center">Our Expert Team</h2>
+        <p class="lead">Experienced developers who've worked on hit titles like Trivia Crack</p>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h3 class="mb-4">Industry Veterans at Your Service</h3>
+        <p class="mb-4">Our team consists of passionate game developers with extensive experience in the gaming industry. We've contributed to successful titles that have reached millions of players worldwide, including the popular Trivia Crack series.</p>
+        <p class="mb-4">With expertise spanning game design, programming, art, and quality assurance, we bring a comprehensive skill set to every project we undertake. Our developers stay at the forefront of gaming technology, ensuring that we deliver cutting-edge experiences that captivate players.</p>
+        <div class="d-flex align-items-center mb-4">
+          <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Trivia_Crack_app_logo.png" alt="Trivia Crack Logo" style="width: 60px; margin-right: 20px;">
+          <div>
+            <h5 class="mb-1">Trivia Crack Experience</h5>
+            <p class="mb-0">Several team members contributed to this global hit with 500M+ downloads</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="team-member">
+              <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Team Member" class="team-img">
+              <h4>Alejandro Rivero</h4>
+              <p class="text-muted">Lead Game Developer</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="team-member">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Team Member" class="team-img">
+              <h4>Maria Gonzalez</h4>
+              <p class="text-muted">Art Director</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="team-member">
+              <img src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Team Member" class="team-img">
+              <h4>Carlos Mendez</h4>
+              <p class="text-muted">Technical Director</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="team-member">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" alt="Team Member" class="team-img">
+              <h4>Lucia Fernandez</h4>
+              <p class="text-muted">Game Designer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-12 text-center mb-5">
+        <h3>Our Expertise</h3>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="game-feature">
+          <i class="fas fa-laptop-code mb-4 feature-icon"></i>
+          <h4 class="mb-3">Game Engines</h4>
+          <p>Proficient in Unity, Unreal Engine, and custom engine development for optimal performance.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="game-feature">
+          <i class="fas fa-vr-cardboard mb-4 feature-icon"></i>
+          <h4 class="mb-3">Emerging Technologies</h4>
+          <p>Experience with AR/VR, blockchain gaming, and cloud-based gaming solutions.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="game-feature">
+          <i class="fas fa-users mb-4 feature-icon"></i>
+          <h4 class="mb-3">Player-Centric Design</h4>
+          <p>Creating engaging experiences based on player psychology and behavior analysis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Clients Section -->
+<section id="clients" class="py-5 bg-light">
+  <div class="container py-5">
+    <div class="row mb-5">
+      <div class="col-lg-6 offset-lg-3 text-center">
+        <h2 class="section-title text-center">Our Clients</h2>
+        <p class="lead">Trusted by studios and publishers around the world</p>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="testimonial">
+          <p class="mb-4">"The team at RIZ Games delivered exceptional quality on our racing game project. Their technical expertise and creative approach exceeded our expectations, and their nearshore location made collaboration seamless despite the distance."</p>
+          <div class="client-info">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Client" class="client-img">
+            <div>
+              <h5 class="mb-0">Michael Rodriguez</h5>
+              <p class="text-muted mb-0">Game Producer, LA Games Studio</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="testimonial">
+          <p class="mb-4">"Working with RIZ Games has been a game-changer for our mobile gaming division. Their team's experience with titles like Trivia Crack brought valuable insights to our project, and the time zone alignment made real-time collaboration effortless."</p>
+          <div class="client-info">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Client" class="client-img">
+            <div>
+              <h5 class="mb-0">Sarah Johnson</h5>
+              <p class="text-muted mb-0">CTO, Mobile Gaming Inc.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center mt-5">
+      <div class="col-12 text-center mb-5">
+        <h3>Featured Collaboration</h3>
+      </div>
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h4 class="mb-4">Los Angeles Studio Partnership</h4>
+        <p class="mb-4">Our successful collaboration with a prominent Los Angeles-based game studio demonstrates the effectiveness of our nearshore model. Working closely with their team, we developed key components for their racing simulation title, delivering high-quality assets and code while maintaining seamless communication despite the physical distance.</p>
+        <p class="mb-4">The time zone alignment allowed for real-time collaboration during standard business hours, eliminating the delays typically associated with offshore development. Our team integrated smoothly with their development pipeline, participating in daily standups and sprint planning as if we were in the same office.</p>
+        <div class="d-flex align-items-center">
+          <i class="fas fa-map-marker-alt contact-icon"></i>
+          <p class="mb-0">Only 3-4 hours time difference with Los Angeles</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <img src="https://images.unsplash.com/photo-1577742480284-c0e50a8c8f9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Los Angeles Skyline" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact py-5">
+  <div class="container py-5">
+    <div class="row mb-5">
+      <div class="col-lg-6 offset-lg-3 text-center">
+        <h2 class="section-title text-center">Get In Touch</h2>
+        <p class="lead">Ready to discuss your project? Contact us today!</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-5 mb-5 mb-lg-0">
+        <div class="contact-info">
+          <h4 class="mb-4">Contact Information</h4>
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-envelope contact-icon"></i>
+            <p class="mb-0">contact@turbostudios.com</p>
+          </div>
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-phone contact-icon"></i>
+            <p class="mb-0">+54 11 1234 5678</p>
+          </div>
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-map-marker-alt contact-icon"></i>
+            <p class="mb-0">Buenos Aires, Argentina</p>
+          </div>
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-clock contact-icon"></i>
+            <p class="mb-0">GMT-3 (Similar to US Eastern Time)</p>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <h4 class="mb-4">Follow Us</h4>
+          <div class="d-flex">
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <form>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                <label for="name">Your Name</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                <label for="email">Your Email</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="subject" placeholder="Subject">
+                <label for="subject">Subject</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="Your Message" id="message" style="height: 150px"></textarea>
+                <label for="message">Your Message</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="mb-0">&copy; 2025 RIZ Games. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <a href="#" class="text-white me-3">Privacy Policy</a>
+        <a href="#" class="text-white">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
