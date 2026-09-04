@@ -1,80 +1,32 @@
-import FaultyTerminal from '@/components/FaultyTerminal';
-import WarpText from '@/components/WarpText';
-import BlurText from '@/components/BlurText';
-import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
-
-// Module scope on purpose: FaultyTerminal lists gridMul in its effect deps, so a
-// fresh array literal on every render would tear down and rebuild the WebGL context.
-const GRID_MUL: [number, number] = [2, 1];
+import { useEffect } from 'react';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import IndexPage from '@/routes/IndexPage';
+import WorkForHirePage from '@/routes/WorkForHirePage';
 
 /**
- * Placeholder shell — the real design replaces this.
+ * React Router keeps the scroll position across navigations, which lands you
+ * halfway down the work-for-hire page after clicking the dock.
  */
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname]);
+
+  return null;
+}
+
 export default function App() {
-  const prefersReducedMotion = usePrefersReducedMotion();
-
   return (
-    <main className="relative min-h-screen overflow-hidden">
-      <div className="absolute inset-0">
-        <FaultyTerminal
-          tint="#00ff88"
-          scale={1.5}
-          gridMul={GRID_MUL}
-          digitSize={1.2}
-          timeScale={0.5}
-          scanlineIntensity={0.5}
-          curvature={0.1}
-          noiseAmp={1}
-          brightness={0.6}
-          mouseReact
-          mouseStrength={0.4}
-          pageLoadAnimation
-          pause={prefersReducedMotion}
-        />
-      </div>
-
-      {/* Keeps foreground text legible over the terminal noise. */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-dark-bg/70 via-dark-bg/40 to-dark-bg/85" />
-
-      {/*
-        pointer-events-none lets mousemove reach the canvas underneath, so the
-        terminal still reacts to the cursor. Interactive children added later
-        need pointer-events-auto to take clicks back.
-      */}
-      <div className="pointer-events-none relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
-        {/*
-          WarpText rasterises the headline into a WebGL canvas, so it is not real
-          text to crawlers or to find-on-page. The h1 carries the actual heading;
-          the canvas is decorative and hidden from assistive tech to avoid
-          announcing "RIZ Games" twice.
-        */}
-        <h1 className="sr-only">RIZ Games</h1>
-
-        <div aria-hidden="true" className="w-full max-w-5xl">
-          <WarpText
-            text="RIZ Games"
-            color="#ffffff"
-            className="pointer-events-auto font-display h-[34vh]"
-            fontWeight={900}
-            fontStyle="italic"
-            letterSpacing="0"
-            warpStrength={0.09}
-            warpScale={1.6}
-            speed={0.5}
-            pointerInfluence={0.4}
-            pointerStrength={0.4}
-            refraction={0.02}
-            ripple
-          />
-        </div>
-
-        <BlurText
-          text="Small studio, big experience."
-          delay={40}
-          animateBy="words"
-          className="text-xl text-white/70 md:text-2xl"
-        />
-      </div>
-    </main>
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<IndexPage />} />
+        <Route path="/work-for-hire" element={<WorkForHirePage />} />
+        {/* nginx serves index.html for unknown paths, so anything else lands here. */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
