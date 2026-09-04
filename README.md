@@ -32,6 +32,15 @@ that component needs (`motion`, `gsap`, `ogl`, `three`, ...).
 
 Browse components at https://reactbits.dev — each page lists its exact command.
 
+### Local modifications
+
+These files have been edited after being pulled from the registry. Re-running
+`shadcn add ... --overwrite` on them will discard the change:
+
+- `src/components/WarpText.tsx` — added a `fontStyle` prop. Upstream builds its
+  canvas font string without a style, so italic headlines are impossible; the
+  patch threads `fontStyle` through the probe element and `ctx.font`.
+
 ## Layout
 
 - `src/` — application source
