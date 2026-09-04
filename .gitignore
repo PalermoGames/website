@@ -21,3 +21,10 @@
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
+### Node / Vite ###
+node_modules/
+dist/
+*.local
+.env
+.env.*
+!.env.example
