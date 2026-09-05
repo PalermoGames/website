@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
-import { Link } from 'react-router-dom';
 import Magnet from '@/components/Magnet';
+import SiteFooter from '@/components/site/SiteFooter';
 import CtaButton from '@/components/site/CtaButton';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { CONTACT_EMAIL, GATEWAY, mailto } from '@/content/site';
@@ -26,7 +26,7 @@ export default function PublisherGateway() {
       <div className="relative flex max-w-3xl flex-col items-center gap-8">
         <h2 className="font-display text-4xl leading-tight text-white sm:text-5xl md:text-6xl">{GATEWAY.headline}</h2>
 
-        <p className="max-w-xl text-lg leading-relaxed text-white/60">{GATEWAY.body}</p>
+        <p className="max-w-xl text-lg leading-relaxed text-white/75">{GATEWAY.body}</p>
 
         <div className="mt-4">
           <Magnet padding={110} magnetStrength={4} disabled={prefersReducedMotion}>
@@ -38,23 +38,13 @@ export default function PublisherGateway() {
 
         {/* Spelled out as well as linked: some publishers are reading this on a
             machine with no mail client wired up. */}
-        <a className="text-sm text-white/35 transition-colors hover:text-white/70" href={mailto(GATEWAY.subject, GATEWAY.emailBody)}>
+        <a className="text-sm text-white/55 transition-colors hover:text-white" href={mailto(GATEWAY.subject, GATEWAY.emailBody)}>
           {CONTACT_EMAIL}
         </a>
       </div>
 
-      <div className="relative mt-20 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-white/30">
-        <span>© {new Date().getFullYear()} RIZ Games — Buenos Aires</span>
-        <Link className="transition-colors hover:text-white/70" to="/work-for-hire">
-          Work-for-hire
-        </Link>
-        {/* Real files in public/, not routes: the Play Store listings link them. */}
-        <a className="transition-colors hover:text-white/70" href="/privacy.html">
-          Privacy
-        </a>
-        <a className="transition-colors hover:text-white/70" href="/tos.html">
-          Terms
-        </a>
+      <div className="relative mt-20">
+        <SiteFooter crossLink={{ label: 'Work-for-hire', to: '/' }} />
       </div>
     </section>
   );

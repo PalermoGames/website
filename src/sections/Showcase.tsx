@@ -71,7 +71,10 @@ function GameViewport({ game }: { game: Game }) {
             ))}
           </ul>
 
-          <p className="text-lg leading-relaxed text-white/75 sm:text-xl">{game.hook}</p>
+          {/* Omitted rather than filled with placeholder prose: the pitches
+              that used to live here were written to prove out the layout and
+              reached production unreplaced. Nothing beats something untrue. */}
+          {game.hook && <p className="text-lg leading-relaxed text-white/80 sm:text-xl">{game.hook}</p>}
 
           <div className={`flex flex-col gap-3 ${alignedRight ? 'items-end' : 'items-start'}`}>
             {ctas.map(renderCta)}

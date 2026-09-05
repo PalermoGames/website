@@ -5,7 +5,8 @@
   --color-dark-bg: #0a0a0a;
   --color-card-bg: #1a1a1a;
 
-  /* Pitch black for the portal, one step up for the pedigree block. */
+  /* Pitch black for the hero and contact blocks, one step up for panelled
+     sections (services, pedigree) so they read as raised against it. */
   --color-ink: #050505;
   --color-graphite: #131316;
 

@@ -16,9 +16,9 @@ export default function Pedigree() {
           {PEDIGREE.headline}
         </h2>
 
-        <p className="mt-8 max-w-3xl text-base leading-relaxed text-white/60 sm:text-lg">{PEDIGREE.body}</p>
+        <p className="mt-8 max-w-3xl text-base leading-relaxed text-white/75 sm:text-lg">{PEDIGREE.body}</p>
 
-        <p className="mt-12 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/40">
+        <p className="mt-12 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/55">
           <span className="font-mono text-[0.6875rem] tracking-[0.2em] uppercase">Production experience from</span>
           {PEDIGREE.studios.map(studio => (
             <span key={studio} className="text-base font-semibold text-white/80">
@@ -31,7 +31,7 @@ export default function Pedigree() {
           {PEDIGREE.proof.map(item => (
             <div key={item.label} className="bg-graphite p-6">
               <dt className="font-mono text-[0.6875rem] tracking-[0.2em] text-neon-green uppercase">{item.label}</dt>
-              <dd className="mt-3 text-sm leading-relaxed text-white/65">{item.text}</dd>
+              <dd className="mt-3 text-sm leading-relaxed text-white/80">{item.text}</dd>
             </div>
           ))}
         </dl>

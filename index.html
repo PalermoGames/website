@@ -3,6 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      Social scrapers (Slack, Discord, LinkedIn, X) do not execute JavaScript,
+      so these tags cannot be injected at runtime by the SPA. The second route
+      gets its own copy of this file at build time — see scripts/og-routes.mjs.
+      Keep the og: block contiguous; that script rewrites it by marker.
+    -->
+    <title>RIZ Games — Unity game development studio in Buenos Aires</title>
+    <meta
+      name="description"
+      content="Senior Unity engineers in Buenos Aires. Game prototyping, production, technical leadership and rescue work, from a team that has shipped titles to hundreds of millions of players."
+    />
+    <link rel="canonical" href="https://rizgames.com.ar/" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- og:start -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RIZ Games" />
+    <meta property="og:url" content="https://rizgames.com.ar/" />
+    <meta property="og:title" content="RIZ Games — Unity game development studio in Buenos Aires" />
+    <meta
+      property="og:description"
+      content="Senior Unity engineers in Buenos Aires. Prototypes, production, technical leadership and rescue work, from a team that has shipped titles to hundreds of millions of players."
+    />
+    <meta property="og:image" content="https://rizgames.com.ar/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- og:end -->
+
     <link rel="icon" type="image/png" href="./src/assets/images/RIZAvatar.png" />
     <link rel="apple-touch-icon" href="./src/assets/images/RIZAvatar.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,7 +39,6 @@
       href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@1,900&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>RIZ Games</title>
   </head>
   <body>
     <div id="root"></div>
