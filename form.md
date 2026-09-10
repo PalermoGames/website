@@ -31,9 +31,11 @@ Our current work and the closest thing here to a Steam context. Our contribution
 The team has also worked on Boba Story (https://www.bubbleteagame.com/boba-story), engineering on Marvel Strike Force through Trick Game Studio, and core gameplay systems on Etermax's Trivia Crack spinoffs: Trivia Crack Adventure, Trivia Crack Explorer and Adivinados, plus a delisted real-time multiplayer spin-off. Happy to go into any of those if scale on live titles is useful to you.
 
 # How many people are on your team right now?
-Two of us full time, plus two contractors we work with regularly. We built Nitro Racers with a larger team and the people who built it are still available to us, so we can staff back up to four or five for a project without recruiting strangers.
+4
 
 # Breakdown your team by role
+Two of us full time, plus two contractors we work with regularly. We built Nitro Racers with a larger team and the people who built it are still available to us, so we can staff back up to four or five for a project without recruiting strangers.
+
 **Full time** two engineers, both across the whole stack of a game: Unity gameplay and systems, backend, and the integration work (payments, ads, analytics). Deliberately overlapping, so neither of us is a single point of failure on any part of a build.
 - **Blas Ingiulla** Senior Software Engineer at Etermax and Honey B Games, Principal Engineer at Trick Game Studio.
 - **Maximiliano Rejlis** Tech Lead at Etermax.
@@ -46,31 +48,24 @@ Available to bring back for a project:
 - **Matias Zuccotti** UI/UX design and illustration. Did the look of Nitro Racers with us.
 
 # Which game engine(s) do you specialize in?
-Unity — our specialisation and where all of the team's depth is, across mobile, PC and WebGL. Comfortable in URP for stylised looks (the cel-shaded rendering on Nitro Racers) as well as the built-in pipeline. [CONFIRM: add Unreal ONLY if someone can genuinely deliver a trailer in it — leaving it out beats overclaiming.]
+Unity, ThreeJS, proprietary client's engine
 
 # What are your core strengths and unique qualities as a studio?
-Vertical slices, fast. Most of what we do is answering whether an idea is worth funding — building the smallest thing that proves it and making that thing look finished. That is the same shape as your trailer step.
+Vertical slices, fast. Most of what we do is answering whether an idea is worth funding, building the smallest thing that proves it and making that thing look finished. That is the same shape as your trailer step.
 
 Senior-only team. Everyone here has shipped and operated live games at scale. There are no juniors learning on your project, and nobody needs to be told what a milestone costs.
 
-Stylised 3D. Nitro Racers is cel-shaded arcade racing with a deliberately graphic look — high-contrast, readable at speed. If your idea needs a distinctive style rather than realism, that is the register we are strongest in.
-
-Game feel. Vehicle handling, combat systems, moment-to-moment responsiveness. We tune things until they feel right rather than until they are merely functional.
-
 We ship, not just build. Store submission, monetisation, analytics, live ops and the unglamorous optimisation that keeps a build running on weak hardware. We have taken our own title all the way out.
 
-Time zone. Buenos Aires, UTC-3: a full working day of overlap with US teams and a working-morning overlap with Europe. English and Spanish natively across the team.
+Time zone. Buenos Aires, UTC-3: a full working day of overlap with US teams and a working-morning overlap with Europe. English B2-C1 level and Spanish natively across the team.
 
 # What kind of projects or tasks do you NOT take on?
-[REVIEW — these are proposed boundaries, edit to match what you actually want to turn down]
 
 - Art-only or audio-only outsourcing. We are engineering-led and can carry stylised 3D, but we are not an art house and would not pitch ourselves as one.
-- Web3, NFT or crypto-monetised games.
-- Real-money gambling and casino titles.
-- Large fixed-bid contracts against a frozen spec before the unknowns are understood. We would rather scope a trailer or vertical slice first and price the rest once it is real — which is how your process already works, so this should not be an issue here.
+- Train AI.
 
 # Do you currently have free capacity, and from what date?
-TODO
+The team is expected to be available for a new project starting in December 2026.
 
 # Contact E-mail address
 contact@rizgames.com.ar
