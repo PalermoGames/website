@@ -449,8 +449,28 @@ export interface Game {
  * finished thing this studio made with nobody to answer to, it is the only real
  * art on the site, and hiding it would leave the showcase as a single game with
  * no footage.
+ *
+ * It also goes first, which is backwards on purpose and temporary. Tango
+ * District is the one still being made and the one with the wishlist, but it
+ * currently renders as a generated gradient, three tags and no paragraph — so
+ * the first screen of a route whose only conversion is a wishlist was the
+ * emptiest on the site, and the screen that sells was the second. Give Tango
+ * District a hook and a screenshot and put it back on top.
+ *
+ * Each game keeps the side it was composed for; the alternation just starts on
+ * the right now.
  */
 export const GAMES: Game[] = [
+  {
+    id: 'nitro-racers',
+    title: 'Nitro Racers',
+    hook: 'A stylised arcade racer, built end to end in house — our own art, tracks, vehicle handling and UI — to a content-complete build with every level in. It never released, for reasons on the business side rather than anything in the build.',
+    tags: ['Mobile', 'Unity', 'Content-complete'],
+    align: 'right',
+    palette: { base: '#12141a', accent: '#ffd21f', glow: '#d94f3d' },
+    media: { poster: nitroArt, logo: nitroLogo },
+    ctas: [{ kind: 'link', label: 'Watch the trailer', href: NITRO_TRAILER_URL }],
+  },
   {
     id: 'tango-district',
     title: 'Tango District',
@@ -472,16 +492,6 @@ export const GAMES: Game[] = [
       // Activates the teaser modal as soon as a file lands here.
       { kind: 'video', label: 'Watch Teaser', src: '' },
     ],
-  },
-  {
-    id: 'nitro-racers',
-    title: 'Nitro Racers',
-    hook: 'A stylised arcade racer, built end to end in house — our own art, tracks, vehicle handling and UI — to a content-complete build with every level in. It never released, for reasons on the business side rather than anything in the build.',
-    tags: ['Mobile', 'Unity', 'Content-complete'],
-    align: 'right',
-    palette: { base: '#12141a', accent: '#ffd21f', glow: '#d94f3d' },
-    media: { poster: nitroArt, logo: nitroLogo },
-    ctas: [{ kind: 'link', label: 'Watch the trailer', href: NITRO_TRAILER_URL }],
   },
 ];
 
