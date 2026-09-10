@@ -6,21 +6,24 @@ RIZ Games is a small independent studio in Buenos Aires, Argentina.
 
 We came out of Senior Software Engineer, Tech Lead and Principal Engineer roles at Etermax, Honey B Games and Trick Game Studio, where we built and operated live game systems at very large scale: online multiplayer, both real-time and turn-based, work on well-known IPs including Marvel, and the optimisation and live-ops work that keeps a build shippable. At Honey B, a startup, that meant working very close to product rather than only to a spec. Combined, the team has roughly thirty years of engineering experience on shipped and live games.
 
-Since then we have been building our own things. Nitro Racers, a stylised cel-shaded arcade racer, was built in house end to end — including our own art and level pipeline — and reached a content-complete build with every level in. It never released, for reasons on the business side rather than anything in the build. We are currently building our own PC title, Tango District.
+Since then we have been building our own things. Nitro Racers, a stylised polygonal art arcade racer, was built in house end to end, including our own art and maps, and reached a content-complete build with every level in. It never released, for reasons on the business side rather than anything in the build. We are currently building our own PC title, Tango District.
 
 Probably the most relevant thing to what you are doing: most of what we have built has been someone else's design. Our background is entirely feature and systems work inside other people's games, on other people's schedules. We have our own IP because we like making games, not because we need every project to be ours. Give us your idea and your trailer script and we will build it.
 
 # Links to 2-3 previous works and your specific contributions to each
-1) Nitro Racers — RIZ Games (our own title, mobile, since delisted). [ADD LINK — STORE PAGE, TRAILER OR ARCHIVED FOOTAGE]
-Stylised cel-shaded arcade racer. Probably the most useful reference for style, since every decision on it was ours. Our contribution: the whole project — Unity development, vehicle handling and feel, UI, monetisation and ad integration, store release and live ops. [CONFIRM WHETHER THE 3D/ART WAS IN HOUSE OR CONTRACTED, AND SAY SO EXPLICITLY — THEY ARE PICKING PARTLY ON STYLE, SO THIS IS THE MOST IMPORTANT LINE IN THE FORM]
+1) Nitro Racers — RIZ Games, our own title.
+Trailer: https://youtu.be/3M-9HFGjvm4?si=RZAqbQa4HKpZywDX
+Full pitch: https://docs.google.com/presentation/d/1tROSlcXC0HEpPgPNjJ3ZB-bfjHh_0QlwSCN-P6jxRMg/edit?usp=sharing
+Stylised arcade racer, built in house end to end, our own art and levels. Probably the most useful reference for style, since every decision on it was ours. Our contribution: Unity development, the art and level pipeline, vehicle handling and feel, UI, monetisation and ad integration.
 
-2) Trivia franchise — Etermax. [ADD TITLE + STORE LINK]
-Core systems engineering on trivia titles played in 180+ countries, in a franchise past 800 million downloads. Our contribution: core gameplay systems, content pipeline and real-time multiplayer.
+2) Focus Friend — Honey B Games. https://www.yourfocusfriend.com/
+Hank Green's focus app. It went to No. 1 free app on the US App Store, has passed a million downloads, and was Google Play's App of the Year for 2025. We built it from the ground up: the client app is entirely ours, with the single exception of the native iOS and Android notification work that shows the timer on the lock screen. We also built the only backend it has — metrics and A/B testing — and the payments and ads integrations.
 
-3) Squad-based RPG on a major superhero IP — Honey B Games. [ADD TITLE + STORE LINK]
-A live title grossing over $700 million lifetime. Our contribution: combat systems engineering and live-operations feature work.
+3) Tango District — RIZ Games, our own PC title, in development.
+https://store.steampowered.com/app/3860680/Tango_District/
+Our current work and the closest thing here to a Steam context. Our contribution: all of it. Happy to send a build or fresh capture.
 
-Tango District, our own PC title in development, is the closest thing we have to current work in a Steam context — happy to send builds or captures. [KEEP THIS LINE ONLY IF THERE IS SOMETHING SHOWABLE TODAY]
+The team has also worked on Boba Story (https://www.bubbleteagame.com/boba-story), engineering on Marvel Strike Force through Trick Game Studio, and core gameplay systems on Etermax's Trivia Crack spinoffs: Trivia Crack Adventure, Trivia Crack Explorer and Adivinados, plus a delisted real-time multiplayer spin-off. Happy to go into any of those if scale on live titles is useful to you.
 
 # How many people are on your team right now?
 We are a team of 4 full-time developers, plus a handful of contractors we work with on an as-needed basis.
