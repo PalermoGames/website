@@ -3,7 +3,7 @@ import Hero from '@/sections/Hero';
 import Showcase from '@/sections/Showcase';
 import Pedigree from '@/sections/Pedigree';
 import IpGateway from '@/sections/IpGateway';
-import { GATEWAY, mailto } from '@/content/site';
+import { GATEWAY } from '@/content/site';
 
 /**
  * The showcase route: studio hero, one game per screen, the studio's track
@@ -35,9 +35,12 @@ const NAV: NavLink[] = [
 export default function ShowcasePage() {
   return (
     <>
-      {/* The header ask on this route is about the games, not the work-for-hire
-          booking the default points at. */}
-      <SiteHeader links={NAV} ctaLabel="Get in touch" ctaHref={mailto(GATEWAY.subject, GATEWAY.emailBody)} />
+      {/* This route's only stated conversion is a wishlist, so the largest
+          button on it goes to Steam. It used to say "Get in touch" and open a
+          mail client, spending the page's most valuable click on something the
+          page is not asking for — the inbox is still there in IpGateway, one
+          rung down, for press and build requests. */}
+      <SiteHeader links={NAV} ctaLabel={GATEWAY.cta} ctaHref={GATEWAY.href} />
       <main>
         <Hero />
         <Showcase />

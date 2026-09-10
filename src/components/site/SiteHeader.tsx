@@ -28,9 +28,11 @@ export default function SiteHeader({
   links: NavLink[];
   ctaLabel?: string;
   /**
-   * Defaults to the work-for-hire ask. `/showcase` overrides it: somebody
-   * clicking "Get in touch" there wants to talk about the games, not to book a
-   * contracting call.
+   * One CTA per route, pointing at that route's actual conversion — not one
+   * label site-wide. "/" sends you to the form in #contact, because a header
+   * should not make a bigger ask than the section it lands you on; "/showcase"
+   * sends you to Steam, because a wishlist is the only conversion that page
+   * has. The default is the booking link, for a route that sets neither.
    */
   ctaHref?: string;
 }) {
@@ -98,9 +100,10 @@ export default function SiteHeader({
           {renderLinks(<span aria-hidden="true" className="h-4 w-px bg-white/20" />)}
           <a
             href={ctaHref}
-            // A mailto: in a new tab leaves an empty one behind after the mail
-            // client opens; an external booking page should still get one.
-            target={ctaHref.startsWith('mailto:') ? undefined : '_blank'}
+            // Only a destination that leaves the site gets a tab. A mailto:
+            // in a new tab leaves an empty one behind once the mail client
+            // opens, and a same-page "#contact" would open the site twice.
+            target={ctaHref.startsWith('http') ? '_blank' : undefined}
             rel="noopener noreferrer"
             className="rounded-full bg-neon-green px-5 py-2 text-sm font-semibold text-black transition-shadow hover:shadow-[0_0_24px_-4px_var(--color-neon-green)]"
           >
@@ -130,9 +133,10 @@ export default function SiteHeader({
           {renderLinks(<span aria-hidden="true" className="h-px w-8 bg-white/20" />, () => setMenuOpen(false))}
           <a
             href={ctaHref}
-            // A mailto: in a new tab leaves an empty one behind after the mail
-            // client opens; an external booking page should still get one.
-            target={ctaHref.startsWith('mailto:') ? undefined : '_blank'}
+            // Only a destination that leaves the site gets a tab. A mailto:
+            // in a new tab leaves an empty one behind once the mail client
+            // opens, and a same-page "#contact" would open the site twice.
+            target={ctaHref.startsWith('http') ? '_blank' : undefined}
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
             className="mt-1 w-fit rounded-full bg-neon-green px-5 py-2 text-sm font-semibold text-black"

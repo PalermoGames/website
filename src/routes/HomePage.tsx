@@ -33,7 +33,9 @@ const NAV: NavLink[] = [
 export default function HomePage() {
   return (
     <>
-      <SiteHeader links={NAV} />
+      {/* The header ask matches the section it scrolls to: the form, not the
+          calendar behind it. */}
+      <SiteHeader links={NAV} ctaLabel="Talk to us" ctaHref="#contact" />
       <main>
         <HomeHero />
         <Services />
