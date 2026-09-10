@@ -268,6 +268,100 @@ export const HOME_CONTACT = {
 } as const;
 
 /**
+ * Where the form POSTs, and the key some providers want inside the body.
+ *
+ * Empty is a supported state, not a broken one. The site is a static nginx
+ * build with no backend, so a form needs somebody else's endpoint; until one is
+ * configured the form still renders, still validates, and hands the visitor a
+ * mail draft with everything they typed already in it — the same fallback a
+ * failed POST gets. That is worth shipping on its own: it is still a structured
+ * ask instead of a bare `mailto:`, and it still collects the timing answer.
+ *
+ * Set `VITE_CONTACT_FORM_ENDPOINT` in the Dokploy environment and it becomes a
+ * real POST with no code change. Formspree puts the form id in the URL and
+ * needs no key; Web3Forms posts to one fixed URL and wants its access key as a
+ * field, which is what `VITE_CONTACT_FORM_KEY` is for. A Cloudflare Worker
+ * later is the same one-variable change.
+ */
+export const CONTACT_FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT ?? '';
+export const CONTACT_FORM_KEY = import.meta.env.VITE_CONTACT_FORM_KEY ?? '';
+
+/**
+ * The form itself — the missing rung in the funnel.
+ *
+ * Before this the only ask on the site was a calendar link: a stranger who had
+ * read three screens was invited to jump straight onto a call with people they
+ * had never spoken to. There was nothing smaller to do first, so anyone not
+ * ready for that had only the address underneath, and a `mailto:` that silently
+ * does nothing on the average locked-down corporate Windows box.
+ *
+ * Four fields are the ask. The fifth, timing, is the one that earns its place:
+ * lead time and the studio's real availability are deliberately unpublished
+ * (see ENGAGEMENT.facts), and this collects that intel on every lead without
+ * the site having to commit to a number in public. The buyer answers the
+ * question instead of forcing it.
+ *
+ * `name` on each field is the key the endpoint receives — renaming one renames
+ * the column in whatever inbox or sheet these land in.
+ */
+export const CONTACT_FORM = {
+  fields: {
+    name: { name: 'name', label: 'Name' },
+    // "Work email" rather than "Email". The word does the qualifying by itself.
+    email: { name: 'email', label: 'Work email' },
+    company: { name: 'company', label: 'Studio or company' },
+    brief: {
+      name: 'brief',
+      label: 'What are you building?',
+      placeholder: 'Scope, platform, engine, and the deadline you are working to.',
+    },
+    timing: {
+      name: 'timing',
+      label: 'When do you need someone?',
+      unanswered: 'Prefer not to say',
+      options: ['ASAP', 'Next quarter', 'Later this year', 'Not sure yet'],
+    },
+  },
+  submit: 'Send it over',
+  sending: 'Sending…',
+  /** Shown instead of `submit` when no endpoint is configured — see above. */
+  compose: 'Write it as an email',
+  composeNote: 'This opens your own mail client with everything filled in.',
+  /** The smaller ask underneath, for the minority who already want the call. */
+  booking: 'Or book a call directly',
+  /**
+   * Replaces the form in place. No redirect: a thank-you page throws away the
+   * context the visitor was reading and gives a spam filter a second thing to
+   * mistrust.
+   *
+   * No clock attached to the promise. "Within one business day" is a real
+   * commitment and nobody at the studio has made it; "we reply to everything"
+   * is true today.
+   */
+  sent: {
+    headline: 'That is with us.',
+    body: 'We reply to everything — including when the answer is that we are the wrong team for it. Nothing else for you to do.',
+  },
+  /**
+   * The POST failed. Never a generic error: a lost lead costs more than an ugly
+   * fallback, so the words they already typed come back as a mail draft.
+   */
+  failed: {
+    headline: 'That did not go through.',
+    body: 'Nothing you wrote is lost — it is already in an email addressed to us, ready to send.',
+    cta: 'Send it as an email',
+  },
+  /** No endpoint configured yet. Same handoff, without pretending it broke. */
+  handoff: {
+    headline: 'Ready to send.',
+    body: 'Everything you wrote is in an email addressed to us. Your mail client sends it.',
+    cta: 'Open the email',
+  },
+  /** Shown under either handoff, for a machine with no mail client wired up. */
+  orCopy: 'Or write to us directly at',
+} as const;
+
+/**
  * Where the primary CTA points, and what it says.
  *
  * The label follows the destination: a button that says "Book a call" has to

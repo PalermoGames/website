@@ -59,6 +59,32 @@ replaces it. Re-add the component with
   `/privacy.html`, `/tos.html`, `/app-ads.txt`, `/og.jpg`
 - `scripts/` — build and pre-deploy checks, run through npm scripts
 
+## Contact form
+
+The homepage form (`src/components/site/ContactForm.tsx`) is the site's primary
+conversion. It needs somewhere to POST, and this is a static build with no
+backend, so the endpoint is configuration:
+
+| Variable | Required | What it is |
+|---|---|---|
+| `VITE_CONTACT_FORM_ENDPOINT` | no | The URL the form POSTs to. Empty disables the POST — see below. |
+| `VITE_CONTACT_FORM_KEY` | no | Sent as an `access_key` field. Web3Forms wants one; Formspree does not. |
+
+Set them in the Dokploy environment for the service. They are read at **build**
+time, not runtime, so changing either needs a rebuild.
+
+**With no endpoint set the form still works.** It renders, validates, and
+submitting hands the visitor a `mailto:` draft with everything they typed
+already in the body. That is the shipping state until somebody signs up for a
+form service, and it is still better than the bare address it replaced: the ask
+is structured and the timing question gets asked. The submit button says so up
+front rather than surprising anyone after the click.
+
+The form posts `FormData`, which Formspree, Web3Forms and a hand-written
+Cloudflare Worker all accept, so switching provider is a change of URL. Spam
+protection today is a honeypot field only; Cloudflare Turnstile is the next
+step and needs a site key.
+
 ## Deployment
 
 Served from Dokploy (project Meta / riz-website), behind Cloudflare at
