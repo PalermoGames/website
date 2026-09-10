@@ -19,6 +19,11 @@ Stylised arcade racer, built in house end to end, our own art and levels. Probab
 2) Focus Friend — Honey B Games. https://www.yourfocusfriend.com/
 Hank Green's focus app. It went to No. 1 free app on the US App Store, has passed a million downloads, and was Google Play's App of the Year for 2025. We built it from the ground up: the client app is entirely ours, with the single exception of the native iOS and Android notification work that shows the timer on the lock screen. We also built the only backend it has — metrics and A/B testing — and the payments and ads integrations.
 
+As seen in TechCrunch:
+https://techcrunch.com/2025/11/18/hank-greens-focus-friend-is-google-plays-app-of-the-year/
+
+https://techcrunch.com/2025/08/18/hank-greens-focus-friend-app-is-climbing-the-app-store-charts-and-its-extremely-cute/
+
 3) Tango District — RIZ Games, our own PC title, in development.
 https://store.steampowered.com/app/3860680/Tango_District/
 Our current work and the closest thing here to a Steam context. Our contribution: all of it. Happy to send a build or fresh capture.
@@ -26,10 +31,19 @@ Our current work and the closest thing here to a Steam context. Our contribution
 The team has also worked on Boba Story (https://www.bubbleteagame.com/boba-story), engineering on Marvel Strike Force through Trick Game Studio, and core gameplay systems on Etermax's Trivia Crack spinoffs: Trivia Crack Adventure, Trivia Crack Explorer and Adivinados, plus a delisted real-time multiplayer spin-off. Happy to go into any of those if scale on live titles is useful to you.
 
 # How many people are on your team right now?
-We are a team of 4 full-time developers, plus a handful of contractors we work with on an as-needed basis.
+Two of us full time, plus two contractors we work with regularly. We built Nitro Racers with a larger team and the people who built it are still available to us, so we can staff back up to four or five for a project without recruiting strangers.
 
 # Breakdown your team by role
-TODO
+Full time — two engineers, both across the whole stack of a game: Unity gameplay and systems, backend, and the integration work (payments, ads, analytics). Deliberately overlapping, so neither of us is a single point of failure on any part of a build.
+- Blas Ingiulla — Senior Software Engineer at Etermax and Honey B Games, Principal Engineer at Trick Game Studio.
+- Maximiliano Rejlis — Tech Lead at Etermax.
+
+Contractors:
+- Pedro Carbone — QA and level design.
+- Juan Gomez Cobo — level design.
+
+Available to bring back for a project:
+- Matias Zuccotti — UI/UX design and illustration. Did the look of Nitro Racers with us.
 
 # Which game engine(s) do you specialize in?
 Unity — our specialisation and where all of the team's depth is, across mobile, PC and WebGL. Comfortable in URP for stylised looks (the cel-shaded rendering on Nitro Racers) as well as the built-in pipeline. [CONFIRM: add Unreal ONLY if someone can genuinely deliver a trailer in it — leaving it out beats overclaiming.]
