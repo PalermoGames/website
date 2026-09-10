@@ -31,7 +31,7 @@ const SHOWCASE = {
   url: `${ORIGIN}/showcase`,
   title: 'The games RIZ Games makes for itself',
   description:
-    'Tango District, a self-published PC title in development, and Nitro Racers, a stylised arcade racer built end to end in house — from a Buenos Aires studio whose team has shipped and operated games at hundreds of millions of players.',
+    "Tango District, a self-published PC title in development, and Nitro Racers, a stylised arcade racer built end to end in house — from the Buenos Aires engineers behind Focus Friend, Google Play's App of the Year 2025.",
 };
 
 const ROUTES = [
