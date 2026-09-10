@@ -531,9 +531,19 @@ export const SHOWCASE_HERO = {
   cta: 'See the games',
 } as const;
 
+/**
+ * The studio, for a reader who wants to place the team before they write.
+ *
+ * There is deliberately no aggregate here. This paragraph used to reach for
+ * "titles measured in hundreds of millions of players", which is the exact move
+ * the STATS docblock forbids — a lineage total, not this team's work, and it
+ * was doing a job `proof` already does two inches below with three figures a
+ * buyer can trace to a named title. Name the work, let the proof list carry the
+ * scale.
+ */
 export const PEDIGREE = {
   headline: 'Creative vision, backed by shipped-title engineering.',
-  body: 'RIZ Games is a small studio built on a long run of production work. Before this was our own IP, the same people were architecting live systems for titles measured in hundreds of millions of players — content pipelines, real-time multiplayer, and the unglamorous optimisation work that keeps a build shippable. We know what a milestone schedule costs and we know how to hit one.',
+  body: 'RIZ Games is a small studio built on a long run of production work. Before this was our own IP, the same people were architecting the live systems inside other studios’ games — content pipelines, real-time multiplayer, and the unglamorous optimisation work that keeps a build shippable. We know what a milestone schedule costs and we know how to hit one.',
   /** Named so anyone reading can place the team without a call. */
   studios: ['Etermax', 'Honey B Games', 'Trick Game Studio'],
   proof: [
