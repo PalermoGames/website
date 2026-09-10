@@ -90,7 +90,7 @@ export default function SiteHeader({
         scrolled ? 'border-b border-white/10 bg-dark-bg/85 backdrop-blur-md' : 'border-b border-transparent'
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4 sm:px-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 sm:gap-6 sm:px-10">
         <Link to="/" className="flex items-center gap-2.5" aria-label="RIZ Games — home">
           <img src={wordmark} alt="" width={44} height={30} className="h-[1.6rem] w-auto" />
           <span className="font-display text-lg leading-none tracking-tight text-white">GAMES</span>
@@ -98,6 +98,15 @@ export default function SiteHeader({
 
         <nav className="hidden items-center gap-8 text-sm text-white/70 md:flex">
           {renderLinks(<span aria-hidden="true" className="h-4 w-px bg-white/20" />)}
+        </nav>
+
+        {/*
+          The CTA sits in the bar at every width, not inside the collapsed menu.
+          At 390px the header's only action used to be the word "Menu", with the
+          primary ask one tap behind it — on the device where people are least
+          patient, behind an affordance weaker than a hamburger.
+        */}
+        <div className="flex items-center gap-4">
           <a
             href={ctaHref}
             // Only a destination that leaves the site gets a tab. A mailto:
@@ -105,21 +114,25 @@ export default function SiteHeader({
             // opens, and a same-page "#contact" would open the site twice.
             target={ctaHref.startsWith('http') ? '_blank' : undefined}
             rel="noopener noreferrer"
-            className="rounded-full bg-neon-green px-5 py-2 text-sm font-semibold text-black transition-shadow hover:shadow-[0_0_24px_-4px_var(--color-neon-green)]"
+            className="rounded-full bg-neon-green px-4 py-2 text-xs font-semibold whitespace-nowrap text-black transition-shadow hover:shadow-[0_0_24px_-4px_var(--color-neon-green)] sm:px-5 sm:text-sm"
           >
             {ctaLabel}
           </a>
-        </nav>
 
-        <button
-          type="button"
-          onClick={() => setMenuOpen(open => !open)}
-          aria-expanded={menuOpen}
-          aria-controls="site-menu"
-          className="text-sm text-white/80 md:hidden"
-        >
-          {menuOpen ? 'Close' : 'Menu'}
-        </button>
+          {/* The 404 renders the header with no links; a button that opens an
+              empty panel is worse than no button. */}
+          {links.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setMenuOpen(open => !open)}
+              aria-expanded={menuOpen}
+              aria-controls="site-menu"
+              className="text-sm text-white/80 md:hidden"
+            >
+              {menuOpen ? 'Close' : 'Menu'}
+            </button>
+          )}
+        </div>
       </div>
 
       {/* `hidden` rather than conditional render so the panel keeps a stable id
@@ -131,18 +144,6 @@ export default function SiteHeader({
       >
         <nav className="flex flex-col items-start gap-4 text-base text-white/80">
           {renderLinks(<span aria-hidden="true" className="h-px w-8 bg-white/20" />, () => setMenuOpen(false))}
-          <a
-            href={ctaHref}
-            // Only a destination that leaves the site gets a tab. A mailto:
-            // in a new tab leaves an empty one behind once the mail client
-            // opens, and a same-page "#contact" would open the site twice.
-            target={ctaHref.startsWith('http') ? '_blank' : undefined}
-            rel="noopener noreferrer"
-            onClick={() => setMenuOpen(false)}
-            className="mt-1 w-fit rounded-full bg-neon-green px-5 py-2 text-sm font-semibold text-black"
-          >
-            {ctaLabel}
-          </a>
         </nav>
       </div>
     </header>
