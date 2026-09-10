@@ -48,7 +48,8 @@ export default function IpGateway() {
       </div>
 
       <div className="relative mt-20">
-        <SiteFooter crossLink={{ label: 'Work-for-hire', to: '/' }} />
+        {/* Same name for "/" as the header uses — see ShowcasePage's NAV. */}
+        <SiteFooter crossLink={{ label: 'Work with us', to: '/' }} />
       </div>
     </section>
   );

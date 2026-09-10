@@ -17,11 +17,19 @@ import { GATEWAY, mailto } from '@/content/site';
  * unfurling as the work-for-hire pitch — almost nobody arrives here except
  * through a link somebody sent.
  */
+/**
+ * The last item is the homepage, and it is named for what the reader would do
+ * there rather than for the trade's word for it. "Work-for-hire" is the
+ * seller's vocabulary; it also described the *service* while the link pointed
+ * at the *route*, so the two sides of the site called the same destination two
+ * different things. One name per destination: "/" is "Work with us"
+ * everywhere, "/showcase" is "Our games" everywhere.
+ */
 const NAV: NavLink[] = [
   { label: 'The games', target: 'showcase' },
   { label: 'Studio', target: 'pedigree' },
   { label: 'Contact', target: 'gateway' },
-  { label: 'Work-for-hire', target: '/' },
+  { label: 'Work with us', target: '/' },
 ];
 
 export default function ShowcasePage() {
