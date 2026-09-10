@@ -75,27 +75,36 @@ export const HOME = {
  * The proof bar, directly under the hero.
  *
  * Three figures, because a client comparing four vendor sites reads three
- * numbers and no paragraphs. All three are titles this team spent real time
- * inside, and all three are named — an anonymised number is a number a buyer
- * cannot check, and every one of these is public.
+ * numbers and no paragraphs. Every number here belongs to a title this team
+ * worked on, and every title is named — an anonymised number is a number a
+ * buyer cannot check, and a number the team did not earn is worse than none.
  *
- * A "$700M+ grossed" figure for Marvel Strike Force used to hold the middle
- * slot. The engineering credit there is real (through Trick Game Studio) but
- * small next to the trivia, simulation and product work, and a revenue number
- * that large implies an involvement to match. It is stated plainly in PEDIGREE
- * instead, without the dollar figure.
+ * Two borrowed numbers used to live here and both are gone:
+ *
+ * - "$700M+ grossed" for Marvel Strike Force. The engineering credit is real,
+ *   through Trick Game Studio, but small next to the trivia, simulation and
+ *   product work, and a revenue figure that large implies an involvement to
+ *   match. PEDIGREE states the credit plainly instead, without the number.
+ * - "800M+ downloads" for the Trivia Crack spin-offs. That figure is Etermax's
+ *   company-wide total across every game it has published; the franchise's own
+ *   number is a fraction of it, and the original Trivia Crack — which nobody
+ *   here worked on — is nearly all of that. The spin-offs this team actually
+ *   built systems for are the number below.
+ *
+ * Do not reach up a level for a bigger figure. Studio totals, franchise totals
+ * and publisher totals are not this team's work.
  */
 export const STATS = [
-  {
-    value: '800M+',
-    label: 'Downloads',
-    detail: 'Core gameplay systems on Etermax’s Trivia Crack spin-offs, played in 180+ countries',
-  },
-  { value: '12M+', label: 'Installs', detail: 'Boba Story, where the team handled performance and live support' },
   {
     value: 'No. 1',
     label: 'US App Store',
     detail: "Focus Friend, built at Honey B Games — and Google Play's App of the Year for 2025",
+  },
+  { value: '12M+', label: 'Installs', detail: 'Boba Story, where the team handled performance and live support' },
+  {
+    value: '10M+',
+    label: 'Downloads',
+    detail: 'Trivia Crack Adventure, where the team built core gameplay systems at Etermax',
   },
 ] as const;
 
@@ -371,8 +380,13 @@ export const PEDIGREE = {
   studios: ['Etermax', 'Honey B Games', 'Trick Game Studio'],
   proof: [
     {
+      /**
+       * Adventure is the only one of the three with a published number, and it
+       * is the one quoted. The franchise and studio totals are much larger and
+       * are not this team's — see the note on STATS.
+       */
       label: 'Scale',
-      text: 'Core gameplay systems on Etermax’s Trivia Crack spin-offs — Adventure, Explorer, Adivinados — in a franchise past 800 million downloads.',
+      text: 'Core gameplay systems on three of Etermax’s Trivia Crack spin-offs — Adventure, Explorer and Adivinados — with Adventure alone past 10 million downloads.',
     },
     {
       /**
