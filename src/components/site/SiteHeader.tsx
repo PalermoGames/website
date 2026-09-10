@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import wordmark from '@/assets/images/RIZletters.png';
 import { BOOKING } from '@/content/site';
@@ -67,6 +67,21 @@ export default function SiteHeader({
       </a>
     );
 
+  /**
+   * Three items scroll this page and one leaves it, and nothing in the row says
+   * which is which until you have already clicked. A divider before the first
+   * route link is the cheapest way to say "everything above is this page".
+   */
+  const routeLinkIndex = links.findIndex(link => link.target.startsWith('/'));
+
+  const renderLinks = (divider: ReactNode, onNavigate?: () => void) =>
+    links.map((link, index) => (
+      <Fragment key={link.label}>
+        {index === routeLinkIndex && index > 0 && divider}
+        {renderLink(link, onNavigate)}
+      </Fragment>
+    ));
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
@@ -80,7 +95,7 @@ export default function SiteHeader({
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm text-white/70 md:flex">
-          {links.map(link => renderLink(link))}
+          {renderLinks(<span aria-hidden="true" className="h-4 w-px bg-white/20" />)}
           <a
             href={ctaHref}
             // A mailto: in a new tab leaves an empty one behind after the mail
@@ -111,8 +126,8 @@ export default function SiteHeader({
         hidden={!menuOpen}
         className="border-t border-white/10 bg-dark-bg/95 px-6 py-5 backdrop-blur-md md:hidden"
       >
-        <nav className="flex flex-col gap-4 text-base text-white/80">
-          {links.map(link => renderLink(link, () => setMenuOpen(false)))}
+        <nav className="flex flex-col items-start gap-4 text-base text-white/80">
+          {renderLinks(<span aria-hidden="true" className="h-px w-8 bg-white/20" />, () => setMenuOpen(false))}
           <a
             href={ctaHref}
             // A mailto: in a new tab leaves an empty one behind after the mail
