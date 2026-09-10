@@ -4,15 +4,11 @@ https://www.rizgames.com.ar/
 # Briefly tell us about your studio and its history
 RIZ Games is a small independent studio in Buenos Aires, Argentina.
 
-We came out of senior production roles at Etermax, Honey B Games and Trick Game Studio, where we built and operated live game systems at very large scale: content pipelines, real-time multiplayer, combat systems, working with well-known IPs such as Marvel and the optimisation and live-ops work that keeps a build shippable. Combined, the team has roughly thirty years of production engineering experience.
+We came out of Senior Software Engineer, Tech Lead and Principal Engineer roles at Etermax, Honey B Games and Trick Game Studio, where we built and operated live game systems at very large scale: online multiplayer, both real-time and turn-based, work on well-known IPs including Marvel, and the optimisation and live-ops work that keeps a build shippable. At Honey B, a startup, that meant working very close to product rather than only to a spec. Combined, the team has roughly thirty years of engineering experience on shipped and live games.
 
-Since then we have been building our own things. We shipped, launched and live-operated our own mobile title, Nitro Racers — a stylised cel-shaded arcade racer, built in house end to end, since delisted. We are currently working on two original PC titles, Tango District and What Floor.
+Since then we have been building our own things. Nitro Racers, a stylised cel-shaded arcade racer, was built in house end to end — including our own art and level pipeline — and reached a content-complete build with every level in. It never released, for reasons on the business side rather than anything in the build. We are currently building our own PC title, Tango District.
 
-Two things are probably most relevant to what you are doing:
-
-We are fast at vertical slices. Most of our work is proving out whether an idea is worth funding — building the smallest thing that answers the question and looks finished doing it. A trailer-first process is how we already work internally.
-
-We are used to building to someone else's design. Our production background is entirely feature and systems work inside other people's games, on other people's schedules. We have our own IP because we like making games, not because we need every project to be ours — we are comfortable executing your idea and your trailer script.
+Probably the most relevant thing to what you are doing: most of what we have built has been someone else's design. Our background is entirely feature and systems work inside other people's games, on other people's schedules. We have our own IP because we like making games, not because we need every project to be ours. Give us your idea and your trailer script and we will build it.
 
 # Links to 2-3 previous works and your specific contributions to each
 1) Nitro Racers — RIZ Games (our own title, mobile, since delisted). [ADD LINK — STORE PAGE, TRAILER OR ARCHIVED FOOTAGE]
@@ -24,7 +20,7 @@ Core systems engineering on trivia titles played in 180+ countries, in a franchi
 3) Squad-based RPG on a major superhero IP — Honey B Games. [ADD TITLE + STORE LINK]
 A live title grossing over $700 million lifetime. Our contribution: combat systems engineering and live-operations feature work.
 
-Tango District and What Floor, our two PC titles in development, are the closest thing we have to current work in a Steam context — happy to send builds or captures. [KEEP THIS LINE ONLY IF THERE IS SOMETHING SHOWABLE TODAY]
+Tango District, our own PC title in development, is the closest thing we have to current work in a Steam context — happy to send builds or captures. [KEEP THIS LINE ONLY IF THERE IS SOMETHING SHOWABLE TODAY]
 
 # How many people are on your team right now?
 We are a team of 4 full-time developers, plus a handful of contractors we work with on an as-needed basis.
