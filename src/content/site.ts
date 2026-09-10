@@ -100,7 +100,12 @@ export const STATS = [
     label: 'US App Store',
     detail: "Focus Friend, built at Honey B Games — and Google Play's App of the Year for 2025",
   },
-  { value: '12M+', label: 'Installs', detail: 'Boba Story, where the team handled performance and live support' },
+  /**
+   * Google Play shows 10M+ on the listing. 12M+ was AppBrain's estimate, and
+   * by this file's own standard a number a buyer can open the store and check
+   * beats a bigger one they cannot.
+   */
+  { value: '10M+', label: 'Installs', detail: 'Boba Story, where the team handled performance and live support' },
   {
     value: '10M+',
     label: 'Downloads',
@@ -531,7 +536,7 @@ export const PEDIGREE = {
        * with the title's revenue implied an involvement to match.
        */
       label: 'Live titles',
-      text: 'Performance and live support on Boba Story, past 12 million installs, and engineering on Marvel Strike Force through Trick Game Studio.',
+      text: 'Performance and live support on Boba Story, past 10 million installs, and engineering on Marvel Strike Force through Trick Game Studio.',
     },
     {
       label: 'Product',
