@@ -229,6 +229,37 @@ export const PORTFOLIO = {
   cta: 'See our games',
 } as const;
 
+/**
+ * Third-party coverage, and the only outside voice on the site.
+ *
+ * Both pieces are about Focus Friend, so they sit with the credit block that
+ * claims it rather than as a free-floating logo strip: a buyer checking the
+ * claim lands on TechCrunch reporting the same thing, which is worth more than
+ * any sentence this file could write about it. They are also the only outbound
+ * links on the route, which is the other half of what they are for.
+ *
+ * Anything added here has to be coverage of work this team did. A piece about a
+ * company somebody once worked at is the borrowed-number problem in STATS
+ * wearing a press badge.
+ */
+export const PRESS = {
+  label: 'As seen in',
+  items: [
+    {
+      outlet: 'TechCrunch',
+      title: 'Hank Green’s Focus Friend is Google Play’s app of the year',
+      date: 'Nov 2025',
+      href: 'https://techcrunch.com/2025/11/18/hank-greens-focus-friend-is-google-plays-app-of-the-year/',
+    },
+    {
+      outlet: 'TechCrunch',
+      title: 'Hank Green’s Focus Friend app is climbing the App Store charts',
+      date: 'Aug 2025',
+      href: 'https://techcrunch.com/2025/08/18/hank-greens-focus-friend-app-is-climbing-the-app-store-charts-and-its-extremely-cute/',
+    },
+  ],
+} as const;
+
 export const HOME_CONTACT = {
   headline: 'Tell us what you are building.',
   body: 'Send the scope, the platform and the deadline. You will get an honest answer about whether we are the right team — including when we are not — rather than a deck.',
@@ -419,4 +450,27 @@ export const GATEWAY = {
   href: STEAM_URL,
   subject: 'Tango District',
   emailBody: 'Hi RIZ Games,\n\nWe would like to talk about Tango District.\n\nCompany:\nRole:\nReason for writing:\n',
+} as const;
+
+/* -------------------------------------------------------------------------- */
+/* The 404 route                                                              */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Shown for any path the router does not know, and served with a real 404 (see
+ * scripts/og-routes.mjs and nginx.conf).
+ *
+ * It used to redirect to "/" instead. A redirect hides the broken link from the
+ * person who followed it and tells a crawler the URL was real, which is how a
+ * two-page site ended up answering 200 to every string anyone typed.
+ */
+export const NOT_FOUND = {
+  code: '404',
+  headline: 'That page is not here.',
+  body: 'It may have moved, or it may never have existed. There are two pages: the work we do for other studios, and the games we make for ourselves.',
+  // Plain words, not the site's internal vocabulary: somebody who just hit a
+  // dead link is the last person who should have to guess what "work-for-hire"
+  // means.
+  home: 'Back to the homepage',
+  showcase: 'Our games',
 } as const;

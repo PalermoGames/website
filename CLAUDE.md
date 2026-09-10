@@ -14,11 +14,20 @@ untouched, which is the whole reason they live there. Do not reformat them,
 convert them to React routes, or change their paths. If you touch the SPA
 fallback in `nginx.conf`, confirm they still resolve as real files first.
 
-That fallback is `try_files $uri $uri.html $uri/ /index.html`. The `$uri.html`
-arm serves the per-route entry points `scripts/og-routes.mjs` writes, so link
-previews are route-specific — scrapers do not run the JS that would otherwise
-set them. The three files above are requested *with* their extension, so `$uri`
-still matches them first.
+That fallback is now `try_files $uri $uri.html $uri/ =404`, with
+`error_page 404 /404.html`. The `$uri.html` arm serves the per-route entry
+points `scripts/og-routes.mjs` writes, so link previews are route-specific —
+scrapers do not run the JS that would otherwise set them. The three files above
+are requested *with* their extension, so `$uri` still matches them first.
+
+**Adding a route to `App.tsx` means adding it to `scripts/og-routes.mjs`.**
+There is no `/index.html` fallback any more: a path with no file behind it now
+returns a real 404, so a route the app resolves and the script does not write
+will 404 in production while working perfectly in `npm run dev`. That is the
+cost of the fix — every URL on the site used to answer 200, including
+`/sitemap.xml` and every typo, which is the worst technical signal a small site
+can send. Redirect-only routes need an entry too; `/work-for-hire` is a
+byte-copy of `index.html` for exactly that reason.
 
 Images live in `src/assets/images/`, not `public/`, so only files that are
 actually imported enter the bundle. `background.jpg` is 7.7 MB — moving the

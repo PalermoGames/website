@@ -1,0 +1,11 @@
+# Two routes, both indexable, and a real 404 for everything else.
+#
+# Cloudflare is configured to serve a managed robots.txt on this zone (the
+# Content Signals preamble plus the AI-crawler blocks), which it merges with
+# whatever the origin returns. This file exists for the one line Cloudflare
+# cannot know: where the sitemap is. Check https://rizgames.com.ar/robots.txt
+# after a deploy and confirm both halves are present.
+User-agent: *
+Allow: /
+
+Sitemap: https://rizgames.com.ar/sitemap.xml

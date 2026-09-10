@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import HomePage from '@/routes/HomePage';
 import ShowcasePage from '@/routes/ShowcasePage';
+import NotFoundPage from '@/routes/NotFoundPage';
 
 /**
  * React Router keeps the scroll position across navigations, which lands you
@@ -39,8 +40,13 @@ export default function App() {
         */}
         <Route path="/original-ip" element={<Navigate to="/showcase" replace />} />
         <Route path="/work-for-hire" element={<Navigate to="/" replace />} />
-        {/* nginx serves index.html for unknown paths, so anything else lands here. */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/*
+          Everything else. nginx answers those paths with dist/404.html — the
+          same shell, served with a real 404 — and the app renders the
+          not-found screen from here. It used to redirect to "/", which turned
+          every typo into a 200 answering with the homepage.
+        */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

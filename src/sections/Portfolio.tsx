@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Pill from '@/components/site/Pill';
 import nitroLogo from '@/assets/images/LogoNitroRacers.png';
 import nitroArt from '@/assets/images/nitroracersnologo.webp';
-import { GAMES, PORTFOLIO, pending } from '@/content/site';
+import { GAMES, PORTFOLIO, PRESS, pending } from '@/content/site';
 
 /**
  * The evidence section, and the argument for why a contract studio with its own
@@ -57,6 +57,35 @@ export default function Portfolio() {
               {PORTFOLIO.credit.label}
             </p>
             <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/75">{PORTFOLIO.credit.text}</p>
+
+            {/* Coverage of that same app, and the only outside voice on the
+                page. It sits inside the credit block rather than in a strip of
+                its own because it is evidence for this claim specifically —
+                a buyer who doubts the paragraph can click and read it
+                reported by somebody who does not work here. */}
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-6">
+              <span className="font-mono text-[0.6875rem] tracking-[0.2em] text-white/45 uppercase">{PRESS.label}</span>
+              <ul className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-6">
+                {PRESS.items.map(item => (
+                  <li key={item.href} className="max-w-md">
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline text-sm leading-relaxed text-white/70 transition-colors hover:text-white"
+                    >
+                      <span className="font-semibold text-white/85 group-hover:text-neon-green">{item.outlet}</span>
+                      {' — '}
+                      {item.title}
+                      <span className="text-white/40"> ({item.date})</span>
+                      <span aria-hidden="true" className="ml-1 text-neon-green">
+                        &#8599;
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
 
