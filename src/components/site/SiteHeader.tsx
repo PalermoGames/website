@@ -17,6 +17,14 @@ export interface NavLink {
  * on top of the body copy at desktop widths — a marketing site cannot spend its
  * information architecture on a flourish.
  *
+ * "Never showed where you were" is the one of those three that is answered by
+ * the site's shape rather than by code, and there is deliberately no active
+ * state here. Every route link points at the page you are *not* on — HomePage
+ * links to /showcase, ShowcasePage links to / — and NotFoundPage renders this
+ * header with `links={[]}`. A `pathname === link.target` check could therefore
+ * never be true on any route this site has. It would read as working to the
+ * next person and never fire once. Add it with the third route, not before.
+ *
  * The lockup is deliberate too: RIZletters.png is the actual brand mark and,
  * before this, appeared nowhere on the site except as a favicon.
  */
