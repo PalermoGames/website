@@ -3,8 +3,8 @@ import { PEDIGREE } from '@/content/site';
 /**
  * The risk-reduction section.
  *
- * A publisher looking at two unreleased indie titles is asking whether this
- * team can finish and optimise them. Named studios and shipped numbers answer
+ * Anyone looking at an unreleased indie title is asking whether this team can
+ * finish and optimise it. Named studios and shipped numbers answer
  * that faster than a paragraph about our values, so the type is plain and the
  * block is quiet — this is evidence, not another pitch.
  */

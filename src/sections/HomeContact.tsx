@@ -3,16 +3,16 @@ import CtaButton from '@/components/site/CtaButton';
 import SiteFooter from '@/components/site/SiteFooter';
 import Magnet from '@/components/Magnet';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
-import { CALENDLY_URL, CONTACT_EMAIL, HOME_CONTACT, mailto } from '@/content/site';
+import { BOOKING, CONTACT_EMAIL, HOME_CONTACT, mailto } from '@/content/site';
 
 /**
  * One ask, one button, small print underneath.
  *
- * Booking is primary: a work-for-hire buyer with a live project would rather
- * take a slot than compose an email and wait. The address stays spelled out
- * underneath for everyone who would not book a call with a stranger — and for
+ * The button follows `BOOKING`: a scheduling link once there is a real one,
+ * a pre-filled email until then. Either way the address stays spelled out
+ * underneath — for everyone who would not book a call with a stranger, and for
  * anyone whose machine has no mail client wired up, which is most corporate
- * Windows installs and the reason a mailto: was a poor primary CTA.
+ * Windows installs and the reason a bare mailto: is a poor only CTA.
  */
 export default function HomeContact() {
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -31,8 +31,8 @@ export default function HomeContact() {
         <p className="text-lg leading-relaxed text-white/75">{HOME_CONTACT.body}</p>
 
         <Magnet padding={110} magnetStrength={4} disabled={prefersReducedMotion}>
-          <CtaButton href={CALENDLY_URL} className="px-10 py-4 text-base">
-            {HOME_CONTACT.cta}
+          <CtaButton href={BOOKING.href} className="px-10 py-4 text-base">
+            {BOOKING.label}
           </CtaButton>
         </Magnet>
 
@@ -42,7 +42,7 @@ export default function HomeContact() {
       </div>
 
       <div className="relative mt-20">
-        <SiteFooter crossLink={{ label: 'Original IP', to: '/original-ip' }} />
+        <SiteFooter crossLink={{ label: 'Our games', to: '/showcase' }} />
       </div>
     </section>
   );

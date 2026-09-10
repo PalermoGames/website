@@ -1,16 +1,20 @@
 /**
- * Emits a second HTML entry point so /original-ip unfurls as itself.
+ * Emits extra HTML entry points so /showcase unfurls as itself.
  *
  * This site is a client-rendered SPA: every route is served the same
  * index.html. Slack, Discord, LinkedIn and X do not run JavaScript when they
- * scrape a link, so per-route og: tags cannot be set from React — a publisher
- * sent https://rizgames.com.ar/original-ip would see the work-for-hire pitch in
- * the preview card.
+ * scrape a link, so per-route og: tags cannot be set from React — anyone sent
+ * https://rizgames.com.ar/showcase would see the work-for-hire pitch in the
+ * preview card.
  *
  * The fix is a copy of the built index.html with the og: block swapped, written
- * to dist/original-ip.html. nginx resolves it via `try_files $uri $uri.html`;
- * the app itself still boots and routes normally from there, because the only
- * difference between the two files is inside <head>.
+ * to dist/showcase.html. nginx resolves it via `try_files $uri $uri.html`; the
+ * app itself still boots and routes normally from there, because the only
+ * difference between the files is inside <head>.
+ *
+ * /original-ip is the same page's old URL and gets the same card, since the
+ * links already shared under it keep resolving (App.tsx redirects it). Its
+ * canonical points at /showcase so search engines only index one.
  *
  * Run after `vite build` (see package.json). Adding another route means adding
  * an entry to ROUTES.
@@ -21,14 +25,17 @@ import path from 'node:path';
 const DIST = path.resolve(import.meta.dirname, '..', 'dist');
 const ORIGIN = 'https://rizgames.com.ar';
 
+const SHOWCASE = {
+  url: `${ORIGIN}/showcase`,
+  title: 'The games RIZ Games makes for itself',
+  description:
+    'Tango District, a self-published PC title in development, and Nitro Racers, a stylised arcade racer built end to end in house — from a Buenos Aires studio whose team has shipped and operated games at hundreds of millions of players.',
+};
+
 const ROUTES = [
-  {
-    file: 'original-ip.html',
-    url: `${ORIGIN}/original-ip`,
-    title: 'RIZ Games — Original PC titles seeking a publisher',
-    description:
-      'Two original PC titles in development from a Buenos Aires studio whose team has shipped and operated games at hundreds of millions of players.',
-  },
+  { file: 'showcase.html', ...SHOWCASE },
+  // The old URL, redirected in the app. Same card, same canonical.
+  { file: 'original-ip.html', ...SHOWCASE },
 ];
 
 const OG_START = '<!-- og:start -->';

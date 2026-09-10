@@ -1,0 +1,41 @@
+import SiteHeader, { type NavLink } from '@/components/site/SiteHeader';
+import Hero from '@/sections/Hero';
+import Showcase from '@/sections/Showcase';
+import Pedigree from '@/sections/Pedigree';
+import IpGateway from '@/sections/IpGateway';
+import { GATEWAY, mailto } from '@/content/site';
+
+/**
+ * The showcase route: studio hero, one game per screen, the studio's track
+ * record, then the ask.
+ *
+ * It was written as a publisher pitch, and lived at /original-ip. Tango
+ * District is self-published and Nitro Racers never released, so there is
+ * nobody to pitch: the page is a showcase of both titles, it exists to be
+ * linked, and its conversion is a wishlist rather than a reply. That is also
+ * why it carries its own OG tags (see scripts/og-routes.mjs) rather than
+ * unfurling as the work-for-hire pitch — almost nobody arrives here except
+ * through a link somebody sent.
+ */
+const NAV: NavLink[] = [
+  { label: 'The games', target: 'showcase' },
+  { label: 'Studio', target: 'pedigree' },
+  { label: 'Contact', target: 'gateway' },
+  { label: 'Work-for-hire', target: '/' },
+];
+
+export default function ShowcasePage() {
+  return (
+    <>
+      {/* The header ask on this route is about the games, not the work-for-hire
+          booking the default points at. */}
+      <SiteHeader links={NAV} ctaLabel="Get in touch" ctaHref={mailto(GATEWAY.subject, GATEWAY.emailBody)} />
+      <main>
+        <Hero />
+        <Showcase />
+        <Pedigree />
+        <IpGateway />
+      </main>
+    </>
+  );
+}

@@ -3,7 +3,7 @@ import FaultyTerminal from '@/components/FaultyTerminal';
 import WarpText from '@/components/WarpText';
 import CtaButton from '@/components/site/CtaButton';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
-import { IP_HERO } from '@/content/site';
+import { SHOWCASE_HERO } from '@/content/site';
 import { scrollToId } from '@/lib/scroll';
 
 // Module scope on purpose: FaultyTerminal lists gridMul in its effect deps, so a
@@ -11,7 +11,7 @@ import { scrollToId } from '@/lib/scroll';
 const GRID_MUL: [number, number] = [2, 1];
 
 /**
- * The publisher-facing studio hero.
+ * The showcase route's studio hero.
  *
  * Two things changed here, both from watching the deployed site load.
  *
@@ -93,16 +93,16 @@ export default function Hero() {
           />
         </div>
 
-        <p className="mt-4 font-mono text-[0.6875rem] tracking-[0.22em] text-neon-green uppercase">{IP_HERO.eyebrow}</p>
+        <p className="mt-4 font-mono text-[0.6875rem] tracking-[0.22em] text-neon-green uppercase">{SHOWCASE_HERO.eyebrow}</p>
 
         <h1 className="font-display mt-6 max-w-3xl text-3xl leading-tight text-white sm:text-4xl md:text-5xl">
-          {IP_HERO.headline}
+          {SHOWCASE_HERO.headline}
         </h1>
 
-        <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">{IP_HERO.sub}</p>
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">{SHOWCASE_HERO.sub}</p>
 
         <div className="pointer-events-auto mt-10">
-          <CtaButton onClick={() => scrollToId('showcase')}>{IP_HERO.cta}</CtaButton>
+          <CtaButton onClick={() => scrollToId('showcase')}>{SHOWCASE_HERO.cta}</CtaButton>
         </div>
       </div>
     </section>

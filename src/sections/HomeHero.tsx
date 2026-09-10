@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import CtaButton from '@/components/site/CtaButton';
-import { CALENDLY_URL, HOME, STATS } from '@/content/site';
+import { BOOKING, HOME, STATS } from '@/content/site';
 
 /**
  * The work-for-hire hero.
@@ -34,11 +34,11 @@ export default function HomeHero() {
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl">{HOME.sub}</p>
 
         <div className="mt-11 flex flex-wrap items-center gap-4">
-          <CtaButton href={CALENDLY_URL} className="px-8 py-3.5 text-base">
-            {HOME.primaryCta}
+          <CtaButton href={BOOKING.href} className="px-8 py-3.5 text-base">
+            {BOOKING.label}
           </CtaButton>
           <Link
-            to="/original-ip"
+            to="/showcase"
             className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white/90 transition-colors hover:border-neon-green hover:bg-white/5 hover:text-white"
           >
             {HOME.secondaryCta}

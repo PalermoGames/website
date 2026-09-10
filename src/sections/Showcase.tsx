@@ -8,10 +8,10 @@ import { GAMES, mailto, type Game, type GameCta } from '@/content/site';
 /**
  * One game, one screen.
  *
- * A grid of thumbnails asks a publisher to compare; a full viewport asks them
- * to look. Sides alternate down the page so the two worlds do not blur into
- * one another, and each section carries its own `--accent`, which is what the
- * pills and buttons inside it colour themselves from.
+ * A grid of thumbnails asks you to compare; a full viewport asks you to look.
+ * Sides alternate down the page so the two games do not blur into one another,
+ * and each section carries its own `--accent`, which is what the pills and
+ * buttons inside it colour themselves from.
  */
 function GameViewport({ game }: { game: Game }) {
   const [teaser, setTeaser] = useState<{ src: string; poster?: string } | null>(null);
@@ -19,26 +19,37 @@ function GameViewport({ game }: { game: Game }) {
   const alignedRight = game.align === 'right';
 
   // A video CTA with no file yet is dropped rather than rendered dead: a
-  // publisher clicking a button that does nothing is worse than one button.
+  // button that does nothing is worse than one button.
   const ctas = game.ctas.filter(cta => cta.kind !== 'video' || cta.src !== '');
 
   const renderCta = (cta: GameCta, index: number) => {
     const variant = index === 0 ? 'solid' : 'ghost';
 
-    return cta.kind === 'email' ? (
-      <CtaButton key={cta.label} href={mailto(cta.subject, cta.body)} variant={variant} className="min-w-56">
-        {cta.label}
-      </CtaButton>
-    ) : (
-      <CtaButton
-        key={cta.label}
-        variant={variant}
-        className="min-w-56"
-        onClick={() => setTeaser({ src: cta.src, poster: cta.poster })}
-      >
-        {cta.label}
-      </CtaButton>
-    );
+    switch (cta.kind) {
+      case 'email':
+        return (
+          <CtaButton key={cta.label} href={mailto(cta.subject, cta.body)} variant={variant} className="min-w-56">
+            {cta.label}
+          </CtaButton>
+        );
+      case 'link':
+        return (
+          <CtaButton key={cta.label} href={cta.href} variant={variant} className="min-w-56">
+            {cta.label}
+          </CtaButton>
+        );
+      case 'video':
+        return (
+          <CtaButton
+            key={cta.label}
+            variant={variant}
+            className="min-w-56"
+            onClick={() => setTeaser({ src: cta.src, poster: cta.poster })}
+          >
+            {cta.label}
+          </CtaButton>
+        );
+    }
   };
 
   return (
@@ -97,7 +108,7 @@ export default function Showcase() {
   return (
     /* The id is also the hook for the scroll-snap rule in index.css. */
     <div id="showcase">
-      <h2 className="sr-only">Our original IPs</h2>
+      <h2 className="sr-only">Our games</h2>
       {GAMES.map(game => (
         <GameViewport key={game.id} game={game} />
       ))}

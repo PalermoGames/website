@@ -70,7 +70,8 @@ with nginx.
 | Path | Serves | Notes |
 |---|---|---|
 | `/` | Work-for-hire | The front door. Contract work is the revenue. |
-| `/original-ip` | Publisher pitch | The URL to put in a cold email to a publisher. |
+| `/showcase` | Tango District, Nitro Racers | The studio's own games. Self-published; the ask is a Steam wishlist, not a pitch deck. |
+| `/original-ip` | redirect to `/showcase` | The old URL for the games page; kept so old links resolve. |
 | `/work-for-hire` | redirect to `/` | Was the live URL for this content; kept so old links resolve. |
 
 ## Copy
@@ -78,6 +79,8 @@ with nginx.
 `src/content/site.ts` holds every string the sections render. Anything marked
 `TODO(copy):` is a fact the file does not know — a commercial term, an elevator
 pitch — and is waiting on a human.
+`pitch.md` is the source of truth for the studio's history, team and work. The
+`src/content/site.ts` copy is derived from it, and should be kept in sync.
 
 ```bash
 npm run check:copy   # fails if any TODO(copy): marker is left
@@ -95,24 +98,27 @@ renders. To drop real media in, set the fields on the game in
 `src/content/site.ts`:
 
 - `media.video` — a short (~5s) silent WebM loop, imported from `src/assets/`
-- `media.poster` — the first frame, shown while the video buffers
+- `media.poster` — the first frame while the video buffers, and, with no video
+  set, the still that fills the viewport instead (this is what Nitro Racers uses)
 - `media.logo` — wordmark; falls back to the title set in the display face
 
 Import them from `src/assets/`, **never** `public/`. Only imported files enter
 the bundle, so unused art in `src/assets/` costs nothing, while everything in
 `public/` ships to every visitor — `background.jpg` alone is 7.7 MB.
 
-> `nitroracersnologo.png` is 1.7 MB of PNG in the bundle today. It is below the
-> fold and lazy-loaded, so it does not affect first paint, but converting it to
-> WebP is worth doing.
+> `nitroracersnologo` was 1.7 MB of PNG; it is now a 93 KB WebP (quality 82,
+> 39 dB PSNR, alpha dropped because every pixel was opaque). The PNG is gone —
+> re-encode from git history if a higher quality is ever needed. It is the only
+> large image the bundle pulls in; `background.jpg` and `RIZ.png` are unimported
+> and cost nothing.
 
 ## Link previews
 
 Slack, Discord, LinkedIn and X do not run JavaScript when they scrape a link,
 so per-route `og:` tags cannot come from React. `scripts/og-routes.mjs` runs
-after `vite build` and writes `dist/original-ip.html` — a copy of the built
-`index.html` with its `og:` block swapped. nginx resolves it through
-`try_files $uri $uri.html`.
+after `vite build` and writes `dist/showcase.html` (plus `dist/original-ip.html`
+for the old URL) — copies of the built `index.html` with the `og:` block
+swapped. nginx resolves them through `try_files $uri $uri.html`.
 
 Adding a route with its own preview card means adding an entry to `ROUTES` in
 that script. The `<!-- og:start -->` / `<!-- og:end -->` markers in `index.html`

@@ -21,7 +21,7 @@ const NAV: NavLink[] = [
   { label: 'Services', target: 'services' },
   { label: 'How we work', target: 'how-we-work' },
   { label: 'Work', target: 'work' },
-  { label: 'Original IP', target: '/original-ip' },
+  { label: 'Our games', target: '/showcase' },
 ];
 
 export default function HomePage() {

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import HomePage from '@/routes/HomePage';
-import OriginalIpPage from '@/routes/OriginalIpPage';
+import ShowcasePage from '@/routes/ShowcasePage';
 
 /**
  * React Router keeps the scroll position across navigations, which lands you
@@ -27,13 +27,17 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/original-ip" element={<OriginalIpPage />} />
+        <Route path="/showcase" element={<ShowcasePage />} />
         {/*
+          Old paths, kept resolving rather than 404ing anyone who bookmarked or
+          shared them.
+
           /work-for-hire was the live URL for this content and is linked from
-          the footer of the currently deployed site. It is now the front page,
-          so keep the old path resolving rather than 404ing anyone who bookmarked
-          or shared it.
+          the footer of the currently deployed site; it is now the front page.
+          /original-ip held the games page until it stopped being a pitch to
+          publishers and became a showcase of both titles.
         */}
+        <Route path="/original-ip" element={<Navigate to="/showcase" replace />} />
         <Route path="/work-for-hire" element={<Navigate to="/" replace />} />
         {/* nginx serves index.html for unknown paths, so anything else lands here. */}
         <Route path="*" element={<Navigate to="/" replace />} />

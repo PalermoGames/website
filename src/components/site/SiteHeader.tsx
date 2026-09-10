@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import wordmark from '@/assets/images/RIZletters.png';
-import { CALENDLY_URL } from '@/content/site';
+import { BOOKING } from '@/content/site';
 
 export interface NavLink {
   label: string;
@@ -20,7 +20,20 @@ export interface NavLink {
  * The lockup is deliberate too: RIZletters.png is the actual brand mark and,
  * before this, appeared nowhere on the site except as a favicon.
  */
-export default function SiteHeader({ links, ctaLabel = 'Book a call' }: { links: NavLink[]; ctaLabel?: string }) {
+export default function SiteHeader({
+  links,
+  ctaLabel = BOOKING.label,
+  ctaHref = BOOKING.href,
+}: {
+  links: NavLink[];
+  ctaLabel?: string;
+  /**
+   * Defaults to the work-for-hire ask. `/showcase` overrides it: somebody
+   * clicking "Get in touch" there wants to talk about the games, not to book a
+   * contracting call.
+   */
+  ctaHref?: string;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -69,8 +82,10 @@ export default function SiteHeader({ links, ctaLabel = 'Book a call' }: { links:
         <nav className="hidden items-center gap-8 text-sm text-white/70 md:flex">
           {links.map(link => renderLink(link))}
           <a
-            href={CALENDLY_URL}
-            target="_blank"
+            href={ctaHref}
+            // A mailto: in a new tab leaves an empty one behind after the mail
+            // client opens; an external booking page should still get one.
+            target={ctaHref.startsWith('mailto:') ? undefined : '_blank'}
             rel="noopener noreferrer"
             className="rounded-full bg-neon-green px-5 py-2 text-sm font-semibold text-black transition-shadow hover:shadow-[0_0_24px_-4px_var(--color-neon-green)]"
           >
@@ -99,8 +114,10 @@ export default function SiteHeader({ links, ctaLabel = 'Book a call' }: { links:
         <nav className="flex flex-col gap-4 text-base text-white/80">
           {links.map(link => renderLink(link, () => setMenuOpen(false)))}
           <a
-            href={CALENDLY_URL}
-            target="_blank"
+            href={ctaHref}
+            // A mailto: in a new tab leaves an empty one behind after the mail
+            // client opens; an external booking page should still get one.
+            target={ctaHref.startsWith('mailto:') ? undefined : '_blank'}
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
             className="mt-1 w-fit rounded-full bg-neon-green px-5 py-2 text-sm font-semibold text-black"

@@ -97,14 +97,21 @@ before pushing anything half-finished.
 
 ## The two routes
 
-`/` sells work-for-hire, `/original-ip` pitches publishers. That split is
+`/` sells work-for-hire, `/showcase` shows the studio's own games. That split is
 deliberate and load-bearing: contract work is the revenue, so it gets the front
 door, and the original IP earns its place on `/` as *evidence* — a studio that
-ships its own games is the argument against every generic outsourcing shop the
+makes its own games is the argument against every generic outsourcing shop the
 homepage competes with. Do not re-merge them into one page.
 
-`/work-for-hire` redirects to `/`. It was the live URL and is linked from the
-previously deployed footer; keep it resolving.
+`/showcase` was written as a publisher pitch, at `/original-ip`. Nobody is being
+pitched: Tango District is self-published and Nitro Racers never released, so
+the page is a showcase of both and its only conversion is a Steam wishlist. Do
+not reintroduce "request the pitch deck" CTAs — there is no deck.
+
+`/work-for-hire` redirects to `/` and `/original-ip` redirects to `/showcase`.
+Both were live URLs — `/work-for-hire` is linked from the previously deployed
+footer — so keep them resolving. `scripts/og-routes.mjs` still writes
+`original-ip.html` so old links unfurl with the right card.
 
 ## Known issues
 
@@ -114,7 +121,7 @@ from a low starting density at `timeScale={0.5}`. Do not "fix" it by guessing �
 measure first.
 
 It is no longer *visible* as a defect: `/` has no WebGL above the fold at all,
-and the `/original-ip` hero paints its gradient and grain underneath, then
+and the `/showcase` hero paints its gradient and grain underneath, then
 composites the canvas in `mix-blend-screen` so the shader's black ground drops
 out and only the lit digits arrive. The section is finished on the first frame
 regardless of the ramp. If you diagnose the ramp properly, that scaffolding can

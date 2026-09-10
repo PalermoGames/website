@@ -85,14 +85,25 @@ export default function GameBackdrop({ game }: { game: Game }) {
           preload="metadata"
           aria-hidden="true"
         />
+      ) : game.media.poster ? (
+        // A game with real art but no loop yet — Nitro Racers, whose key art is
+        // the only shipped-quality frame this studio has.
+        <img
+          className="h-full w-full object-cover"
+          src={game.media.poster}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        />
       ) : (
         <GameArt palette={game.palette} align={game.align} />
       )}
 
       <div className={`absolute inset-0 ${scrim}`} />
-      {/* Gameplay footage is bright and busy in ways generated art is not, so
-          only the video case gets the extra flat knock-down. */}
-      {game.media.video && <div className="absolute inset-0 bg-black/25" />}
+      {/* Real art is bright and busy in ways generated gradients are not, so
+          only that case gets the extra flat knock-down. */}
+      {(game.media.video || game.media.poster) && <div className="absolute inset-0 bg-black/25" />}
     </div>
   );
 }

@@ -12,7 +12,7 @@ type CtaButtonProps = CommonProps &
 /**
  * The one button style on the site. Colour comes from the `--accent` custom
  * property on an ancestor, so the same component reads as part of Tango
- * District's world in one section and What Floor's in the next.
+ * District's world in one section and the next game's in the next.
  */
 export default function CtaButton({ children, variant = 'solid', className = '', href, onClick }: CtaButtonProps) {
   const base =
@@ -25,8 +25,18 @@ export default function CtaButton({ children, variant = 'solid', className = '',
 
   const classes = `${base} ${skin} ${className}`;
 
+  // Everything that leaves the site — the booking calendar, a store page —
+  // opens in a new tab, so a visitor mid-read does not lose the page. mailto:
+  // must not: it would hand the mail client a tab and leave an empty one here.
+  const external = href?.startsWith('http') ?? false;
+
   return href ? (
-    <a className={classes} href={href}>
+    <a
+      className={classes}
+      href={href}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
+    >
       {children}
     </a>
   ) : (

@@ -8,11 +8,15 @@ import { CONTACT_EMAIL, GATEWAY, mailto } from '@/content/site';
 /**
  * Replaces the footer entirely.
  *
- * A sitemap at the bottom of a portfolio is a place for a publisher to lose
+ * A sitemap at the bottom of a portfolio is a place for a reader to lose
  * interest. This is one ask, one button, and the small print underneath —
  * including the two static legal pages the Play Store listings point at.
+ *
+ * The button leaves for Steam: the game is self-published, so a wishlist is
+ * worth more than a message. The address stays spelled out for the people with
+ * a real reason to write, which is why it is not hidden behind a form.
  */
-export default function PublisherGateway() {
+export default function IpGateway() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
@@ -30,14 +34,14 @@ export default function PublisherGateway() {
 
         <div className="mt-4">
           <Magnet padding={110} magnetStrength={4} disabled={prefersReducedMotion}>
-            <CtaButton href={mailto(GATEWAY.subject, GATEWAY.emailBody)} className="px-10 py-4 text-base">
+            <CtaButton href={GATEWAY.href} className="px-10 py-4 text-base">
               {GATEWAY.cta}
             </CtaButton>
           </Magnet>
         </div>
 
-        {/* Spelled out as well as linked: some publishers are reading this on a
-            machine with no mail client wired up. */}
+        {/* Spelled out as well as linked: some readers are on a machine with no
+            mail client wired up. */}
         <a className="text-sm text-white/55 transition-colors hover:text-white" href={mailto(GATEWAY.subject, GATEWAY.emailBody)}>
           {CONTACT_EMAIL}
         </a>
