@@ -98,7 +98,7 @@ export const STATS = [
   {
     value: 'No. 1',
     label: 'US App Store',
-    detail: "Focus Friend, built at Honey B Games — and Google Play's App of the Year for 2025",
+    detail: "Focus Friend, built at Honey B Games — Google Play's App of the Year and an Apple Cultural Impact winner, both in 2025",
   },
   /**
    * Google Play shows 10M+ on the listing. 12M+ was AppBrain's estimate, and
@@ -225,10 +225,17 @@ export const PORTFOLIO = {
   /**
    * Team credit, and labelled as one. Built at Honey B Games, not sold by RIZ.
    * Saying which is which plainly is worth more than the ambiguity would be.
+   *
+   * Both awards are named because the app holds both and the site claimed one:
+   * Google Play's App of the Year for 2025, and one of six Cultural Impact
+   * winners in Apple's 2025 App Store Awards. Verified against Apple's own
+   * newsroom post rather than coverage of it. The awards belong to the app and
+   * to Honey B; the credit is that these engineers built it, which is why this
+   * block stays labelled and stays here rather than moving to STATS alone.
    */
   credit: {
     label: 'Team credit',
-    text: 'The same engineers built Focus Friend at Honey B Games — Hank Green’s focus app, the No. 1 free app on the US App Store, past a million downloads, and Google Play’s App of the Year for 2025. The client was ours end to end, along with the analytics and A/B backend, payments and ads.',
+    text: 'The same engineers built Focus Friend at Honey B Games — Hank Green’s focus app, the No. 1 free app on the US App Store, past a million downloads, Google Play’s App of the Year for 2025, and one of the six Cultural Impact winners in Apple’s App Store Awards the same year. The client was ours end to end, along with the analytics and A/B backend, payments and ads.',
   },
   inDevelopmentLede: 'And an original PC title in development, which is where the design opinions come from.',
   cta: 'See our games',
@@ -540,7 +547,7 @@ export const PEDIGREE = {
     },
     {
       label: 'Product',
-      text: 'Focus Friend at Honey B Games: the whole client, the analytics and A/B backend, payments and ads. No. 1 free app on the US App Store.',
+      text: 'Focus Friend at Honey B Games: the whole client, the analytics and A/B backend, payments and ads. No. 1 free app on the US App Store, and it took Google Play’s App of the Year and an Apple Cultural Impact award in the same year.',
     },
   ],
 } as const;
