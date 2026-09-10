@@ -68,6 +68,17 @@ export const HOME = {
    */
   headline: 'Senior game engineers, on your design and your schedule.',
   sub: 'Funded prototypes, embedded engineers and whole builds. Everyone here has shipped and operated live games at scale — and we make our own, so the opinions about game feel are ours too.',
+  /**
+   * Scrolls to the form, not to the calendar.
+   *
+   * This button said "Book a call" while the header above it said "Talk to us"
+   * and the section it lands on leads with a form — the largest, first thing on
+   * the page was asking for the biggest commitment the site has, at the exact
+   * moment a buyer is deciding whether to keep reading. BOOKING is not gone; it
+   * is the second rung, in HOME_CONTACT, where a visitor who has read the page
+   * can take it.
+   */
+  primaryCta: 'Tell us what you’re building',
   secondaryCta: 'See our own game',
 } as const;
 

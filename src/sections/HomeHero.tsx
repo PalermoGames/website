@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import CtaButton from '@/components/site/CtaButton';
-import { BOOKING, HOME, STATS } from '@/content/site';
+import { HOME, STATS } from '@/content/site';
 
 /**
  * The work-for-hire hero.
@@ -34,8 +34,9 @@ export default function HomeHero() {
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl">{HOME.sub}</p>
 
         <div className="mt-11 flex flex-wrap items-center gap-4">
-          <CtaButton href={BOOKING.href} className="px-8 py-3.5 text-base">
-            {BOOKING.label}
+          {/* An anchor, so CtaButton's `external` check leaves it in-tab. */}
+          <CtaButton href="#contact" className="px-8 py-3.5 text-base">
+            {HOME.primaryCta}
           </CtaButton>
           <Link
             to="/showcase"
