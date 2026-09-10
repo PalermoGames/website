@@ -34,16 +34,16 @@ The team has also worked on Boba Story (https://www.bubbleteagame.com/boba-story
 Two of us full time, plus two contractors we work with regularly. We built Nitro Racers with a larger team and the people who built it are still available to us, so we can staff back up to four or five for a project without recruiting strangers.
 
 # Breakdown your team by role
-Full time — two engineers, both across the whole stack of a game: Unity gameplay and systems, backend, and the integration work (payments, ads, analytics). Deliberately overlapping, so neither of us is a single point of failure on any part of a build.
-- Blas Ingiulla — Senior Software Engineer at Etermax and Honey B Games, Principal Engineer at Trick Game Studio.
-- Maximiliano Rejlis — Tech Lead at Etermax.
+**Full time** two engineers, both across the whole stack of a game: Unity gameplay and systems, backend, and the integration work (payments, ads, analytics). Deliberately overlapping, so neither of us is a single point of failure on any part of a build.
+- **Blas Ingiulla** Senior Software Engineer at Etermax and Honey B Games, Principal Engineer at Trick Game Studio.
+- **Maximiliano Rejlis** Tech Lead at Etermax.
 
 Contractors:
-- Pedro Carbone — QA and level design.
-- Juan Gomez Cobo — level design.
+- **Pedro Carbone** QA and level design.
+- **Juan Gomez Cobo** level design.
 
 Available to bring back for a project:
-- Matias Zuccotti — UI/UX design and illustration. Did the look of Nitro Racers with us.
+- **Matias Zuccotti** UI/UX design and illustration. Did the look of Nitro Racers with us.
 
 # Which game engine(s) do you specialize in?
 Unity — our specialisation and where all of the team's depth is, across mobile, PC and WebGL. Comfortable in URP for stylised looks (the cel-shaded rendering on Nitro Racers) as well as the built-in pipeline. [CONFIRM: add Unreal ONLY if someone can genuinely deliver a trailer in it — leaving it out beats overclaiming.]
